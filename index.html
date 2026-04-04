@@ -3,20 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project OJT NEXUS | JPSME CTU Main</title>
+    <title>Directory | Project OJT NEXUS</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* NEXUS COLOR PALETTE - Electric & Technical */
-            --nexus-dark: #0f172a;       /* Deep Navy Base */
-            --nexus-blue: #1e40af;       /* Vibrant Electric Blue */
-            --nexus-orange: #f97316;     /* Vibrant Nexus Orange */
-            --nexus-cyan: #22d3ee;       /* Highlight Cyan */
-            --glass-bg: rgba(255, 255, 255, 0.04); /* Transparent glass */
-            --glass-border: rgba(255, 255, 255, 0.08);
+            /* CELESTIAL NEXUS COLOR PALETTE */
+            --space-dark: #030712;       
+            --space-blue: #0f172a;       
+            --primary: #00f0ff;          /* Glowing Cyan */
+            --secondary: #b026ff;        /* Nebula Purple */
+            
+            --glass-bg: rgba(15, 23, 42, 0.75); 
+            --glass-border: rgba(0, 240, 255, 0.2); 
+            --glass-shadow: rgba(0, 0, 0, 0.6);
+            
             --white: #ffffff;
-            --text-dark: #cbd5e1;       /* Light gray text for dark bg */
-            --text-muted: #94a3b8;
+            --text-main: #e2e8f0;        
+            --text-muted: #94a3b8;       
         }
 
         * {
@@ -24,293 +27,552 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Poppins', sans-serif;
-            scroll-behavior: smooth;
         }
 
         body {
-            /* VIBRANT NEXUS GRADIENT */
-            background: radial-gradient(circle at 50% 50%, #1e40af 0%, #0f172a 70%, #0a0f1e 100%);
-            color: var(--text-dark);
+            background: linear-gradient(-45deg, #030712, #0f172a, #1e1b4b, #020617);
+            background-size: 400% 400%;
+            animation: cosmicDrift 20s ease infinite;
+            color: var(--text-main);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            overflow-x: hidden;
             position: relative;
         }
 
-        /* --- AESTHETIC TRANSPARENT GEAR WATERMARK BACKGROUND --- */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            opacity: 0.15; /* Subtly visible watermark */
-            /* Generate a custom, transparent gear pattern watermark in an engineering style.
-               It should be large cogs and clockwork covering the entire screen. */
-            background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="1000" height="1000" viewBox="0 0 1000 1000"%3E%3Cpath fill="%23FFFFFF" d="M1000 0H0v1000h1000V0zM170 170c-25 0-45 20-45 45s20 45 45 45 45-20 45-45-20-45-45-45zM226 314c-11 0-20 9-20 20s9 20 20 20 20-9 20-20-9-20-20-20zM286 443c-6 0-11 5-11 11s5 11 11 11 11-5 11-11-5-11-11-11zM114 433c-3 0-6 3-6 6s3 6 6 6 6-3 6-6-3-6-6-6zM324 532c-3 0-6 3-6 6s3 6 6 6 6-3 6-6-3-6-6-6zM312 600c0 14-11 25-25 25s-25-11-25-25 11-25 25-25 25 11 25 25zM157 714c0 11-9 20-20 20s-20-9-20-20 9-20 20-20 20 9 20 20zM218 805c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM418 805c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM418 705c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM518 705c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM618 705c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM718 705c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM818 705c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM918 705c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM918 605c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM918 505c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM918 405c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM918 305c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM918 205c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM918 105c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM818 105c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM718 105c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM618 105c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM518 105c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM418 105c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM318 105c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM218 105c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM118 105c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM314 226c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20zM443 286c0-6-5-11-11-11s-11 5-11 11 5 11 11 11 11-5 11-11zM433 114c0-3-3-6-6-6s-6 3-6 6 3 6 6 6 6-3 6-6zM532 324c0-3-3-6-6-6s-6 3-6 6 3 6 6 6 6-3 6-6zM600 312c14 0 25-11 25-25s-11-25-25-25-25 11-25 25 11 25 25 25zM714 157c11 0 20-9 20-20s-9-20-20-20-20 9-20 20 9 20 20 20zM805 218c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM805 418c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM705 418c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM705 518c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM705 618c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM705 718c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM705 818c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM705 918c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM605 918c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM505 918c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM405 918c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM305 918c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM205 918c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM105 918c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM105 818c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM105 718c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM105 618c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM105 518c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM105 418c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM105 318c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM105 218c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM105 118c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM218 314c0 11 9 20 20 20s20-9 20-20-9-20-20-20-20 9-20 20zM286 443c0 6 5 11 11 11s11-5 11-11-5-11-11-11-11 5-11 11zM114 433c0 3 3 6 6 6s6-3 6-6-3-6-6-6-6 3-6 6zM324 532c0 3 3 6 6 6s6-3 6-6-3-6-6-6-6 3-6 6zM312 600c0 14 11 25 25 25s25-11 25-25-11-25-25-25-25 11-25 25 11 25 25 25zM157 714c0 11 9 20 20 20s20-9 20-20-9-20-20-20-20 9-20 20zM218 805c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM418 805c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM418 705c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM518 705c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM618 705c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM718 705c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM818 705c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM918 705c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM918 605c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM918 505c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM918 405c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM918 305c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM918 205c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM918 105c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM818 105c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM718 105c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM618 105c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM518 105c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM418 105c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM318 105c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM218 105c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM118 105c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM314 226c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20zM443 286c0-6-5-11-11-11s-11 5-11 11 5 11 11 11 11-5 11-11zM433 114c0-3-3-6-6-6s-6 3-6 6 3 6 6 6 6-3 6-6zM532 324c0-3-3-6-6-6s-6 3-6 6 3 6 6 6 6-3 6-6zM600 312c14 0 25-11 25-25s-11-25-25-25-25 11-25 25 11 25 25 25zM714 157c11 0 20-9 20-20s-9-20-20-20-20 9-20 20 9 20 20 20zM805 218c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM805 418c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM705 418c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM705 518c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM705 618c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM705 718c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM705 818c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM705 918c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM605 918c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM505 918c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM405 918c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM305 918c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM205 918c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM105 918c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM105 818c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM105 718c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM105 618c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM105 518c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM105 418c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM105 318c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM105 218c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM105 118c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM218 314c0 11 9 20 20 20s20-9 20-20-9-20-20-20-20 9-20 20zM286 443c0 6 5 11 11 11s11-5 11-11-5-11-11-11-11 5-11 11zM114 433c0 3 3 6 6 6s6-3 6-6-3-6-6-6-6 3-6 6zM324 532c0 3 3 6 6 6s6-3 6-6-3-6-6-6-6 3-6 6zM312 600c0 14 11 25 25 25s25-11 25-25-11-25-25-25-25 11-25 25 11 25 25 25zM157 714c0 11 9 20 20 20s20-9 20-20-9-20-20-20-20 9-20 20zM218 805c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM418 805c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM418 705c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM518 705c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM618 705c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM718 705c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM818 705c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM918 705c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM918 605c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM918 505c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM918 405c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM918 305c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM918 205c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM918 105c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM818 105c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM718 105c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM618 105c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM518 105c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM418 105c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM318 105c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM218 105c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM118 105c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15z"%3E%3C/path%3E%3C/svg%3E');
-            background-size: cover;
-            background-repeat: no-repeat;
-            mix-blend-mode: overlay; /* Blends the pattern with the gradient base */
+        @keyframes cosmicDrift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
-        /* --- PROFESSIONAL HEADER --- */
+        /* --- AESTHETIC TRANSPARENT GEAR WATERMARK --- */
+        body::before {
+            content: '';
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1; opacity: 0.04;
+            background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="1000" height="1000" viewBox="0 0 1000 1000"%3E%3Cpath fill="%2300f0ff" d="M1000 0H0v1000h1000V0zM170 170c-25 0-45 20-45 45s20 45 45 45 45-20 45-45-20-45-45-45zM226 314c-11 0-20 9-20 20s9 20 20 20 20-9 20-20-9-20-20-20zM286 443c-6 0-11 5-11 11s5 11 11 11 11-5 11-11-5-11-11-11zM114 433c-3 0-6 3-6 6s3 6 6 6 6-3 6-6-3-6-6-6zM324 532c-3 0-6 3-6 6s3 6 6 6 6-3 6-6-3-6-6-6zM312 600c0 14-11 25-25 25s-25-11-25-25 11-25 25-25 25 11 25 25zM157 714c0 11-9 20-20 20s-20-9-20-20 9-20 20-20 20 9 20 20zM218 805c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM418 805c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM418 705c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM518 705c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM618 705c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM718 705c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM818 705c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM918 705c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM918 605c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM918 505c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM918 405c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM918 305c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM918 205c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM918 105c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM818 105c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM718 105c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM618 105c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM518 105c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM418 105c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM318 105c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM218 105c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM118 105c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM314 226c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20zM443 286c0-6-5-11-11-11s-11 5-11 11 5 11 11 11 11-5 11-11zM433 114c0-3-3-6-6-6s-6 3-6 6 3 6 6 6 6-3 6-6zM532 324c0-3-3-6-6-6s-6 3-6 6 3 6 6 6 6-3 6-6zM600 312c14 0 25-11 25-25s-11-25-25-25-25 11-25 25 11 25 25 25zM714 157c11 0 20-9 20-20s-9-20-20-20-20 9-20 20 9 20 20 20zM805 218c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM805 418c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM705 418c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM705 518c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM705 618c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM705 718c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM705 818c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM705 918c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM605 918c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM505 918c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM405 918c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM305 918c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM205 918c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM105 918c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM105 818c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM105 718c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM105 618c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM105 518c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM105 418c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM105 318c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM105 218c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM105 118c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15z"%3E%3C/path%3E%3C/svg%3E');
+            background-size: 500px;
+            mix-blend-mode: screen; 
+        }
+
+        /* --- HEADER --- */
         header {
-            background: rgba(15, 23, 42, 0.85); /* Nexus Dark, frosted */
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border-bottom: 2px solid var(--nexus-blue);
-            padding: 0.8rem 3rem;
+            background: rgba(3, 7, 18, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+            padding: 1rem 3rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 30px var(--glass-shadow);
             position: sticky;
             top: 0;
             z-index: 100;
         }
 
-        .header-brand {
+        .header-left {
             display: flex;
             align-items: center;
             gap: 15px;
-            text-decoration: none;
+            flex: 1;
         }
 
-        /* Logo Placeholder */
         .logo-placeholder {
-            width: 45px;
-            height: 45px;
-            background: var(--nexus-orange);
-            color: white;
-            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+            border-radius: 50%; 
             display: flex;
             justify-content: center;
             align-items: center;
             font-weight: 800;
-            font-size: 0.8rem;
-            box-shadow: 0 4px 10px rgba(249, 115, 22, 0.3);
+            font-size: 1.2rem;
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
         }
 
-        .brand-text h1 {
-            font-size: 1.2rem;
-            font-weight: 800;
-            color: var(--nexus-cyan);
-            line-height: 1.1;
-        }
-        
-        .brand-text h2 {
-            font-size: 0.75rem;
+        .brand-text {
+            font-size: 0.85rem;
             font-weight: 500;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 1px;
+            line-height: 1.2;
         }
 
-        /* Main Navigation Tabs */
+        .header-center {
+            flex: 1;
+            text-align: center;
+        }
+
+        .header-center h1 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--white);
+            letter-spacing: 3px;
+            text-shadow: 0 0 15px rgba(0, 240, 255, 0.6);
+        }
+
+        .header-right {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+        }
+
         .main-nav {
             display: flex;
-            gap: 1rem;
+            gap: 0.5rem;
         }
 
         .main-tab {
             text-decoration: none;
             background: transparent;
-            border: none;
             color: var(--text-muted);
-            font-size: 1rem;
-            font-weight: 600;
+            font-size: 0.95rem;
+            font-weight: 500;
             cursor: pointer;
             padding: 8px 16px;
             border-radius: 8px;
             transition: all 0.3s ease;
+            letter-spacing: 1px;
         }
 
         .main-tab:hover {
-            color: var(--nexus-cyan);
-            background: rgba(34, 211, 238, 0.05);
+            color: var(--white);
+            background: rgba(255, 255, 255, 0.05);
         }
 
         .main-tab.active {
-            color: var(--white);
-            background: rgba(255, 255, 255, 0.1);
-            box-shadow: inset 0 -3px 0 var(--nexus-orange);
+            color: var(--primary);
+            background: rgba(0, 240, 255, 0.1);
+            border: 1px solid rgba(0, 240, 255, 0.2);
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.1);
         }
 
-        /* --- MAIN CONTAINER --- */
+        /* --- MAIN CONTENT --- */
         main {
             flex-grow: 1;
             padding: 3rem 2rem;
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
             width: 100%;
-            z-index: 1;
+        }
+
+        /* --- SUB-NAVIGATION --- */
+        .sub-nav {
             display: flex;
-            flex-direction: column;
-            gap: 3rem;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
         }
 
-        /* --- GLASSMORPHISM CARDS --- */
-        .content-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 2px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 4rem 3rem;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
-            animation: slideUp 0.6s ease-out;
+        .sub-nav-btn {
+            background: rgba(15, 23, 42, 0.6);
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            padding: 10px 24px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 240, 255, 0.1);
+            letter-spacing: 1px;
         }
 
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(30px); }
+        .sub-nav-btn:hover, .sub-nav-btn.active {
+            background: var(--primary);
+            color: var(--space-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 240, 255, 0.4);
+        }
+
+        .view-section {
+            display: none;
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        .view-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .content-card h2 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: var(--nexus-cyan);
-            margin-bottom: 1.5rem;
-            text-align: center;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        /* --- DIRECTORY BROWSE VIEW --- */
+        .filters {
+            display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 2rem; justify-content: center;
         }
 
-        .content-card p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: var(--text-dark);
-            margin-bottom: 1.5rem;
-            text-align: justify;
+        .filter-btn {
+            background: rgba(255, 255, 255, 0.05); border: 1px solid var(--glass-border);
+            color: var(--text-main); padding: 8px 20px; border-radius: 20px;
+            cursor: pointer; font-size: 0.9rem; font-weight: 500; transition: 0.3s;
         }
 
-        .highlight-box {
-            background: rgba(249, 115, 22, 0.05); /* Orange tint */
-            border-left: 5px solid var(--nexus-orange);
-            padding: 1.5rem;
-            border-radius: 12px;
-            margin-top: 2rem;
-            text-align: left;
+        .filter-btn:hover, .filter-btn.active {
+            background: rgba(176, 38, 255, 0.2); color: var(--white);
+            border-color: var(--secondary); box-shadow: 0 0 15px rgba(176, 38, 255, 0.4);
         }
 
-        .highlight-box h3 {
-            color: var(--nexus-orange);
-            margin-bottom: 10px;
-            font-size: 1.3rem;
-            font-weight: 700;
+        .directory-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 2rem;
         }
 
-        /* CTA Button */
-        .cta-container {
-            text-align: center;
-            margin-top: 2.5rem;
+        .company-card {
+            background: var(--glass-bg); backdrop-filter: blur(12px); border: 1px solid var(--glass-border);
+            border-radius: 16px; padding: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border-top: 4px solid var(--primary); transition: all 0.3s ease; position: relative;
+            overflow: hidden;
         }
 
-        .cta-btn {
-            display: inline-block;
-            text-decoration: none;
-            background: var(--nexus-orange);
-            color: var(--white);
-            padding: 14px 35px;
-            border-radius: 30px;
-            font-size: 1.1rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 10px 25px rgba(249, 115, 22, 0.4);
-            transition: all 0.3s ease;
+        .company-card::before {
+            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(0,240,255,0.05) 0%, transparent 70%);
+            z-index: 0; pointer-events: none;
         }
 
-        .cta-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(249, 115, 22, 0.6);
-            background: #c2410c;
+        .company-card:hover {
+            transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0, 240, 255, 0.15);
+            border-color: rgba(0, 240, 255, 0.4);
         }
 
-        /* Contact Details Placholder */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-            text-align: center;
+        .card-content { position: relative; z-index: 1; }
+
+        .company-name { font-size: 1.4rem; font-weight: 700; color: var(--white); margin-bottom: 0.8rem; line-height: 1.3;}
+        .company-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 1.5rem; }
+        .tag { background: rgba(0, 240, 255, 0.15); color: var(--primary); border: 1px solid rgba(0,240,255,0.3); font-size: 0.75rem; padding: 4px 10px; border-radius: 12px; font-weight: 600;}
+        
+        .detail-group { margin-bottom: 1rem; font-size: 0.95rem; }
+        .detail-label { font-weight: 600; color: var(--primary); display: block; margin-bottom: 2px;}
+        .detail-text { color: var(--text-main); display: block; font-weight: 400;}
+        
+        .comments-box { 
+            background: rgba(0,0,0,0.3); padding: 15px; border-radius: 12px; 
+            font-size: 0.9rem; font-style: italic; border-left: 3px solid var(--secondary); 
+            margin-top: 15px; color: var(--text-main);
         }
 
-        .contact-item {
-            background: rgba(255,255,255,0.02);
-            padding: 2rem 1rem;
-            border-radius: 15px;
-            border: 1px dashed var(--nexus-blue);
+        /* --- CONTRIBUTE FORM VIEW --- */
+        .form-container {
+            background: var(--glass-bg); backdrop-filter: blur(15px); padding: 3rem;
+            border-radius: 20px; border: 1px solid var(--glass-border); box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+            max-width: 800px; margin: 0 auto;
         }
 
-        @media (max-width: 768px) {
-            header { flex-direction: column; gap: 15px; padding: 1.5rem 1rem; }
-            .content-card { padding: 2.5rem 1.5rem; }
-            .content-card h2 { font-size: 2rem; }
-            body::before { opacity: 0.1; }
+        .form-container h3 { margin-bottom: 2rem; color: var(--primary); text-align: center; font-size: 1.8rem; font-weight: 700; letter-spacing: 1px;}
+        .form-group { margin-bottom: 1.5rem; }
+        .form-group label { display: block; font-weight: 500; margin-bottom: 0.5rem; font-size: 0.95rem; color: var(--text-main);}
+        
+        .form-group input[type="text"], .form-group select, .form-group textarea {
+            width: 100%; padding: 12px 15px; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; 
+            font-family: 'Poppins', sans-serif; background: rgba(0,0,0,0.4); color: var(--white);
+            font-size: 0.95rem; transition: 0.3s;
+        }
+        
+        .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(255,255,255,0.3); }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 10px rgba(0, 240, 255, 0.3); }
+        .form-group select option { background: var(--space-blue); color: white;}
+        .form-group textarea { resize: vertical; min-height: 100px; }
+
+        .checkbox-group { display: flex; flex-wrap: wrap; gap: 15px; background: rgba(0,0,0,0.2); padding: 15px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);}
+        .checkbox-item { display: flex; align-items: center; gap: 8px; font-size: 0.9rem; font-weight: 400; cursor: pointer; color: var(--text-main);}
+
+        .submit-btn { 
+            background: transparent; color: var(--primary); border: 1px solid var(--primary); 
+            padding: 14px 20px; border-radius: 8px; cursor: pointer; width: 100%; font-size: 1.1rem; 
+            font-weight: 600; transition: all 0.3s ease; margin-top: 10px; letter-spacing: 1px; text-transform: uppercase;
+        }
+        .submit-btn:hover { background: var(--primary); color: var(--space-dark); box-shadow: 0 0 20px rgba(0, 240, 255, 0.4); }
+
+        .system-msg { 
+            text-align: center; margin-top: 20px; font-weight: 600; 
+            color: #4ade80; background: rgba(4, 120, 87, 0.2); padding: 12px; 
+            border-radius: 8px; display: none; border: 1px solid #10b981;
+        }
+
+        @media (max-width: 900px) {
+            header { flex-direction: column; padding: 1rem; gap: 15px;}
+            .header-left, .header-center, .header-right { flex: none; justify-content: center; text-align: center;}
+            .header-center h1 { font-size: 1.5rem; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <a href="index.html" class="header-brand">
-            <div class="logo-placeholder">LOGO</div>
+        <div class="header-left">
+            <div class="logo-placeholder">⚙️</div>
             <div class="brand-text">
-                <h2>JPSME - CTU Main Chapter</h2>
-                <h1>OJT NEXUS</h1>
+                JPSME<br>CTU Main
             </div>
-        </a>
+        </div>
         
-        <nav class="main-nav">
-            <a href="index.html" class="main-tab active">Home</a>
-            <a href="directory.html" class="main-tab">Directory</a>
-            <a href="#contact-section" class="main-tab">Contact Us</a>
-        </nav>
+        <div class="header-center">
+            <h1>PROJECT NEXUS</h1>
+        </div>
+
+        <div class="header-right">
+            <nav class="main-nav">
+                <a href="index.html" class="main-tab">Home</a>
+                <a href="directory.html" class="main-tab active">Directory</a>
+                <a href="index.html#contact-section" class="main-tab">Contact Us</a>
+            </nav>
+        </div>
     </header>
 
     <main>
-        <section id="home-section" class="content-card">
-            <h2>Welcome to Project Nexus</h2>
-            <p>As the second semester approaches, Third-Year BSME students face the critical transition to their On-the-Job Training (OJT). Historically, our mechanical engineering students encounter significant challenges during this phase.</p>
-            <p>These challenges include the logistical burden of the search, the "hassle" of blind hunting for companies, and the disadvantage of lacking a "backer" or professional network. Furthermore, there is often uncertainty about documentary requirements and limited knowledge of stipends or allowances.</p>
-            
-            <div class="highlight-box">
-                <h3>Our Initiative</h3>
-                <p style="margin-bottom: 0;">To address this, the Internal and External Affairs (IEA) Committee proposes <strong>Project OJT NEXUS</strong>. This centralized directory serves as a channel for gathering intelligence from 4th Year students and Alumni to guide incoming trainees. By sharing verified company details, application modes, and firsthand experiences, we aim to ensure equal access and a smoother OJT journey for every aspiring mechanical engineer.</p>
+        <div class="sub-nav">
+            <button class="sub-nav-btn active" onclick="switchView('browse')">Browse Directory</button>
+            <button class="sub-nav-btn" onclick="switchView('add')">Contribute Experience</button>
+        </div>
+
+        <section id="browse-view" class="view-section active">
+            <div class="filters" id="filter-container">
+                <button class="filter-btn active" onclick="filterDirectory('All')">All Fields</button>
+                <button class="filter-btn" onclick="filterDirectory('HVAC')">HVAC</button>
+                <button class="filter-btn" onclick="filterDirectory('Machine Shop')">Machine Shop</button>
+                <button class="filter-btn" onclick="filterDirectory('CAD / Design')">CAD / Design</button>
+                <button class="filter-btn" onclick="filterDirectory('Power Plant')">Power Plant</button>
+                <button class="filter-btn" onclick="filterDirectory('Manufacturing')">Manufacturing</button>
+                <button class="filter-btn" onclick="filterDirectory('Construction')">Construction</button>
             </div>
 
-            <div class="cta-container">
-                <a href="directory.html" class="cta-btn">Access the Directory</a>
-            </div>
+            <div class="directory-grid" id="directory-grid">
+                </div>
         </section>
 
-        <section id="contact-section" class="content-card">
-            <h2>Contact Us</h2>
-            <p style="text-align: center; color: var(--text-muted);">Have questions about the directory or want to partner with JPSME CTU Main? Reach out to us through the following channels:</p>
-            
-            <div class="contact-grid">
-                <div class="contact-item">
-                    <h3 style="color: var(--nexus-cyan); margin-bottom: 10px;">📧 Email Us</h3>
-                    <p style="color: var(--text-muted); font-size: 0.95rem;">jpsme.ctumain@example.com</p>
-                </div>
-                
-                <div class="contact-item">
-                    <h3 style="color: var(--nexus-cyan); margin-bottom: 10px;">📘 Facebook</h3>
-                    <p style="color: var(--text-muted); font-size: 0.95rem;">@JPSMECTUMain</p>
-                </div>
+        <section id="add-view" class="view-section">
+            <div class="form-container">
+                <h3>Add a Company / Experience</h3>
+                <form id="addCompanyForm" onsubmit="handleFormSubmit(event)">
+                    <div class="form-group">
+                        <label>Company Name *</label>
+                        <input type="text" id="compName" required placeholder="e.g. SMC Consolidated Power Corp.">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Company Address *</label>
+                        <input type="text" id="compAddress" required placeholder="e.g. Mandaue City, Cebu">
+                    </div>
 
-                <div class="contact-item">
-                    <h3 style="color: var(--nexus-cyan); margin-bottom: 10px;">📍 Office</h3>
-                    <p style="color: var(--text-muted); font-size: 0.95rem;">M.J. Cuenco Ave, Cebu City</p>
-                </div>
+                    <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                        <div class="form-group" style="flex: 1; min-width: 200px;">
+                            <label>Contact Person</label>
+                            <input type="text" id="compPerson" placeholder="e.g. Engr. Juan Dela Cruz">
+                        </div>
+                        <div class="form-group" style="flex: 1; min-width: 200px;">
+                            <label>Contact Details</label>
+                            <input type="text" id="compContact" placeholder="e.g. hr@company.com / 09123456789">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Mode of Application</label>
+                        <select id="compMode">
+                            <option value="Physical Submission (Walk-in)">Physical Submission (Walk-in)</option>
+                            <option value="Online via Email">Online via Email</option>
+                            <option value="Online via Portal">Online via Portal</option>
+                            <option value="Both Physical and Online">Both Physical and Online</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Engineering Fields (Select all that apply) *</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-item"><input type="checkbox" value="HVAC" class="field-cb"> HVAC</label>
+                            <label class="checkbox-item"><input type="checkbox" value="Machine Shop" class="field-cb"> Machine Shop</label>
+                            <label class="checkbox-item"><input type="checkbox" value="CAD / Design" class="field-cb"> CAD / Design</label>
+                            <label class="checkbox-item"><input type="checkbox" value="Power Plant" class="field-cb"> Power Plant</label>
+                            <label class="checkbox-item"><input type="checkbox" value="Manufacturing" class="field-cb"> Manufacturing</label>
+                            <label class="checkbox-item"><input type="checkbox" value="Construction" class="field-cb"> Construction</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Application Requirements</label>
+                        <textarea id="compReq" placeholder="e.g. Endorsement Letter, Resume, MOA, Medical Certificate..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Comments / Tips / Allowance Info</label>
+                        <textarea id="compComments" placeholder="e.g. They give 300/day allowance. Interview is purely technical."></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Submit to Directory</button>
+                    <div id="systemMessage" class="system-msg">Company successfully added to the directory!</div>
+                </form>
             </div>
         </section>
     </main>
 
+    <script>
+        // Initial Dummy Data
+        let companies = [
+            {
+                name: "Tsuneishi Heavy Industries (Cebu), Inc.",
+                address: "Buanoy, Balamban, Cebu",
+                contacts: [{ person: "Ms. HR Recruiter", details: "recruitment@tsuneishi.com" }],
+                mode: "Online via Email",
+                fields: ["Manufacturing", "CAD / Design", "Machine Shop"],
+                reqs: "Resume, Endorsement Letter from CTU, Transcript of Records",
+                comments: "Great experience in ship building. Free lunch and uniform provided. Allowance is roughly 250/day."
+            },
+            {
+                name: "Daikin Philippines - Cebu Branch",
+                address: "Mandaue City, Cebu",
+                contacts: [{ person: "Engr. Mark Santos", details: "0917-123-4567" }],
+                mode: "Both Physical and Online",
+                fields: ["HVAC"],
+                reqs: "Resume, Application Letter, MOA",
+                comments: "Very hands-on troubleshooting of VRV systems. Highly recommended if you want to pursue HVAC."
+            }
+        ];
+
+        // Navigation Logic
+        function switchView(view) {
+            document.querySelectorAll('.view-section').forEach(sec => sec.classList.remove('active'));
+            document.querySelectorAll('.sub-nav-btn').forEach(btn => btn.classList.remove('active'));
+            
+            document.getElementById(view + '-view').classList.add('active');
+            event.target.classList.add('active');
+
+            if(view === 'browse') renderDirectory('All');
+        }
+
+        // Render Directory
+        function renderDirectory(filterField) {
+            const grid = document.getElementById('directory-grid');
+            grid.innerHTML = ''; 
+
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if(btn.innerText === filterField || (btn.innerText === 'All Fields' && filterField === 'All')) {
+                    btn.classList.add('active');
+                }
+            });
+
+            const filteredData = filterField === 'All' 
+                ? companies 
+                : companies.filter(c => c.fields.includes(filterField));
+
+            filteredData.forEach(comp => {
+                let tagsHTML = comp.fields.map(f => `<span class="tag">${f}</span>`).join('');
+                
+                let contactsHTML = comp.contacts.map(c => `
+                    <span class="detail-text">• ${c.person ? c.person : 'N/A'} - ${c.details ? c.details : 'No details'}</span>
+                `).join('');
+
+                let cardHTML = `
+                    <div class="company-card">
+                        <div class="card-content">
+                            <div class="company-name">${comp.name}</div>
+                            <div class="company-tags">${tagsHTML}</div>
+                            
+                            <div class="detail-group">
+                                <span class="detail-label">📍 Address:</span>
+                                <span class="detail-text">${comp.address}</span>
+                            </div>
+
+                            <div class="detail-group">
+                                <span class="detail-label">📞 Contacts:</span>
+                                ${contactsHTML}
+                            </div>
+
+                            <div class="detail-group">
+                                <span class="detail-label">📄 Mode of Application:</span>
+                                <span class="detail-text">${comp.mode}</span>
+                            </div>
+
+                            <div class="detail-group">
+                                <span class="detail-label">📋 Requirements:</span>
+                                <span class="detail-text">${comp.reqs || 'Not specified'}</span>
+                            </div>
+
+                            ${comp.comments ? `
+                            <div class="comments-box">
+                                <strong>Feedback:</strong> "${comp.comments}"
+                            </div>` : ''}
+                        </div>
+                    </div>
+                `;
+                grid.innerHTML += cardHTML;
+            });
+
+            if(filteredData.length === 0) {
+                grid.innerHTML = `<p style="text-align:center; grid-column: 1/-1; color: var(--text-muted); font-size: 1.1rem; padding: 2rem;">No companies found for this field yet. Be the first to contribute!</p>`;
+            }
+        }
+
+        function filterDirectory(field) {
+            renderDirectory(field);
+        }
+
+        // Form Logic (Duplicate Handling)
+        function handleFormSubmit(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('compName').value.trim();
+            const address = document.getElementById('compAddress').value.trim();
+            const person = document.getElementById('compPerson').value.trim();
+            const contactDetails = document.getElementById('compContact').value.trim();
+            const mode = document.getElementById('compMode').value;
+            const reqs = document.getElementById('compReq').value.trim();
+            const comments = document.getElementById('compComments').value.trim();
+            
+            let selectedFields = [];
+            document.querySelectorAll('.field-cb:checked').forEach(cb => selectedFields.push(cb.value));
+
+            if(selectedFields.length === 0) {
+                alert("Please select at least one Engineering Field.");
+                return;
+            }
+
+            let existingCompanyIndex = companies.findIndex(c => c.name.toLowerCase() === name.toLowerCase());
+
+            if(existingCompanyIndex !== -1) {
+                let comp = companies[existingCompanyIndex];
+                let contactExists = comp.contacts.some(c => 
+                    c.person.toLowerCase() === person.toLowerCase() && 
+                    c.details.toLowerCase() === contactDetails.toLowerCase()
+                );
+
+                if(contactExists) {
+                    alert("This company and contact person are already listed in the directory!");
+                    return;
+                } else {
+                    comp.contacts.push({ person: person, details: contactDetails });
+                    selectedFields.forEach(f => { if(!comp.fields.includes(f)) comp.fields.push(f); });
+                    if(comments) comp.comments += ` | Update: ${comments}`;
+                    
+                    showSuccessMessage("Company already exists. New contact details successfully appended!");
+                }
+            } else {
+                let newCompany = {
+                    name: name, address: address,
+                    contacts: [{ person: person, details: contactDetails }],
+                    mode: mode, fields: selectedFields, reqs: reqs, comments: comments
+                };
+                companies.push(newCompany);
+                showSuccessMessage("New company successfully added to the directory!");
+            }
+
+            document.getElementById('addCompanyForm').reset();
+        }
+
+        function showSuccessMessage(msg) {
+            const msgBox = document.getElementById('systemMessage');
+            msgBox.innerText = msg;
+            msgBox.style.display = 'block';
+            setTimeout(() => { msgBox.style.display = 'none'; }, 4000);
+        }
+
+        // Init
+        renderDirectory('All');
+    </script>
 </body>
 </html>
