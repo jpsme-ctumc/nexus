@@ -100,20 +100,20 @@
             flex: 1; /* Pushes center to exact middle */
         }
 
-        .logo-placeholder {
-            width: 45px;
-            height: 45px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: var(--white);
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-weight: 800;
-            font-size: 1rem;
-            box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
-            text-decoration: none;
-        }
+        .logo-img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%; /* Makes the image perfectly round */
+    object-fit: cover; /* Prevents the logo from stretching */
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
+    background-color: var(--white); /* Helps if your logo is transparent */
+    transition: all 0.3s ease;
+}
+
+.header-brand:hover .logo-img {
+    box-shadow: 0 0 20px var(--primary);
+    transform: scale(1.05);
+}
 
         .brand-text {
             font-size: 0.9rem;
@@ -348,7 +348,7 @@
 
     <header>
         <div class="header-left">
-            <div class="logo-placeholder">⚙️</div>
+            <img src="logo.png" alt="JPSME Logo" class="logo-img">
             <div class="brand-text">
                 Junior Philippine Society of Mechanical Engineers<br><span>CTU Main Chapter</span>
             </div>
