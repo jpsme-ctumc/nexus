@@ -352,6 +352,7 @@
                 <button class="filter-btn" onclick="filterDirectory('Power Plant')">Power Plant</button>
                 <button class="filter-btn" onclick="filterDirectory('Manufacturing')">Manufacturing</button>
                 <button class="filter-btn" onclick="filterDirectory('Construction')">Construction</button>
+                <button class="filter-btn" onclick="filterDirectory('Motorpool')">Motorpool</button>
             </div>
 
             <div class="directory-grid" id="directory-grid">
@@ -402,6 +403,7 @@
                             <label class="checkbox-item"><input type="checkbox" value="Power Plant" class="field-cb"> Power Plant</label>
                             <label class="checkbox-item"><input type="checkbox" value="Manufacturing" class="field-cb"> Manufacturing</label>
                             <label class="checkbox-item"><input type="checkbox" value="Construction" class="field-cb"> Construction</label>
+                            <label class="checkbox-item"><input type="checkbox" value="Motorpool" class="field-cb"> Motorpool</label
                         </div>
                     </div>
 
@@ -426,22 +428,22 @@
         // Initial Dummy Data
         let companies = [
             {
-                name: "Tsuneishi Heavy Industries (Cebu), Inc.",
-                address: "Buanoy, Balamban, Cebu",
-                contacts: [{ person: "Ms. HR Recruiter", details: "recruitment@tsuneishi.com" }],
+                name: "Ina Micro Opto Corporation",
+                address: "MEPZ II, Basak, Lapu Lapu City, Cebu",
+                contacts: [{ person: "HR - Christine Dignos", details: "09176291617" }],
                 mode: "Online via Email",
-                fields: ["Manufacturing", "CAD / Design", "Machine Shop"],
-                reqs: "Resume, Endorsement Letter from CTU, Transcript of Records",
-                comments: "Great experience in ship building. Free lunch and uniform provided. Allowance is roughly 250/day."
+                fields: ["Manufacturing"],
+                reqs: "Resume, Endorsement Letter from CTU, Payment for Company ID, Slippers",
+                comments: "Good for students who are interested in manufacturing processes or operating machine like CNC lathe machines."
             },
             {
-                name: "Daikin Philippines - Cebu Branch",
-                address: "Mandaue City, Cebu",
-                contacts: [{ person: "Engr. Mark Santos", details: "0917-123-4567" }],
-                mode: "Both Physical and Online",
-                fields: ["HVAC"],
+                name: "OPASCOR",
+                address: "B.Benedicto St, Cebu City, 6000 Cebu, Philippines",
+                contacts: [{ person: "Jocelyn G. Ranario", details: "-" }],
+                mode: "Walk-in",
+                fields: ["Motorpool"],
                 reqs: "Resume, Application Letter, MOA",
-                comments: "Very hands-on troubleshooting of VRV systems. Highly recommended if you want to pursue HVAC."
+                comments: "Hands-on and friendly."
             }
         ];
 
