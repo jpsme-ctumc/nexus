@@ -7,12 +7,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #1e3a8a; /* Deep Blue */
-            --secondary: #f59e0b; /* CTU Gold/Orange */
-            --bg-color: #f3f4f6;
-            --text-dark: #1f2937;
-            --text-light: #6b7280;
+            --primary: #2563eb; /* Bright Royal Blue */
+            --secondary: #f59e0b; /* Warm Gold */
+            --text-dark: #1e293b;
+            --text-light: #475569;
             --white: #ffffff;
+            --glass-bg: rgba(255, 255, 255, 0.55);
+            --glass-border: rgba(255, 255, 255, 0.8);
+            --glass-shadow: rgba(0, 0, 0, 0.05);
         }
 
         * {
@@ -23,37 +25,68 @@
         }
 
         body {
-            background-color: var(--bg-color);
+            /* Animated Pastel Gradient Background */
+            background: linear-gradient(-45deg, #fbc2eb, #a18cd1, #fad0c4, #c2e9fb);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
             color: var(--text-dark);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            overflow-x: hidden;
+            position: relative;
         }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* --- FLOATING MACHINE GIFS --- */
+        .bg-gif {
+            position: fixed;
+            z-index: -1;
+            opacity: 0.12; /* Very subtle so it doesn't distract */
+            mix-blend-mode: multiply; /* Blends nicely with the pastel colors */
+            pointer-events: none;
+            border-radius: 20px;
+        }
+
+        /* You can swap these links with any other machine GIFs you prefer */
+        .gif1 { top: 5%; left: 2%; width: 300px; transform: rotate(10deg); }
+        .gif2 { bottom: 5%; right: 2%; width: 350px; transform: rotate(-15deg); }
+        .gif3 { top: 40%; left: 75%; width: 250px; transform: rotate(5deg); }
+        .gif4 { bottom: 30%; left: 5%; width: 200px; transform: rotate(-5deg); }
 
         /* --- HEADER --- */
         header {
-            background-color: var(--primary);
-            color: var(--white);
-            padding: 1.5rem 2rem;
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--glass-border);
+            padding: 2rem 2rem;
             text-align: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 30px var(--glass-shadow);
             position: sticky;
             top: 0;
             z-index: 100;
         }
 
         header h2 {
-            font-size: 1rem;
-            font-weight: 400;
-            letter-spacing: 1px;
-            color: #cbd5e1;
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            color: var(--text-light);
+            text-transform: uppercase;
         }
 
         header h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--secondary);
-            margin-top: 0.2rem;
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-top: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(255,255,255,0.5);
         }
 
         /* --- NAVIGATION --- */
@@ -61,46 +94,51 @@
             display: flex;
             justify-content: center;
             gap: 1rem;
-            margin-top: 1rem;
+            margin-top: 1.5rem;
         }
 
         .nav-btn {
-            background: transparent;
-            color: var(--white);
-            border: 1px solid rgba(255,255,255,0.3);
-            padding: 8px 20px;
-            border-radius: 20px;
+            background: var(--glass-bg);
+            color: var(--primary);
+            border: 1px solid var(--glass-border);
+            padding: 10px 24px;
+            border-radius: 30px;
             cursor: pointer;
-            font-weight: 500;
-            transition: 0.3s;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
         }
 
         .nav-btn:hover, .nav-btn.active {
-            background: var(--secondary);
-            border-color: var(--secondary);
-            color: #fff;
+            background: var(--primary);
+            border-color: var(--primary);
+            color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(37, 99, 235, 0.2);
         }
 
         /* --- MAIN CONTAINER --- */
         main {
             flex-grow: 1;
-            padding: 2rem;
+            padding: 3rem 2rem;
             max-width: 1200px;
             margin: 0 auto;
             width: 100%;
+            z-index: 1;
         }
 
         .view-section {
             display: none;
-            animation: fadeIn 0.4s ease-in-out;
+            animation: slideUp 0.5s ease-out;
         }
 
         .view-section.active {
             display: block;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
@@ -108,93 +146,162 @@
         .filters {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 2rem;
+            gap: 12px;
+            margin-bottom: 2.5rem;
             justify-content: center;
         }
 
         .filter-btn {
-            background: var(--white);
-            border: 1px solid #d1d5db;
-            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid var(--glass-border);
+            color: var(--text-dark);
+            padding: 8px 18px;
             border-radius: 20px;
             cursor: pointer;
             font-size: 0.9rem;
-            transition: 0.2s;
+            font-weight: 500;
+            transition: 0.3s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
         }
 
         .filter-btn:hover, .filter-btn.active {
-            background: var(--primary);
+            background: var(--secondary);
             color: var(--white);
-            border-color: var(--primary);
+            border-color: var(--secondary);
+            box-shadow: 0 4px 10px rgba(245, 158, 11, 0.3);
         }
 
         .directory-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 1.5rem;
+            gap: 2rem;
         }
 
+        /* Glassmorphism Cards */
         .company-card {
-            background: var(--white);
-            border-radius: 12px;
-            padding: 1.5rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            border-top: 4px solid var(--secondary);
-            transition: transform 0.2s;
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 8px 32px var(--glass-shadow);
+            border-top: 5px solid var(--primary);
+            transition: all 0.3s ease;
         }
 
         .company-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            background: rgba(255, 255, 255, 0.7);
         }
 
-        .company-name { font-size: 1.25rem; font-weight: 600; color: var(--primary); margin-bottom: 0.5rem; }
-        .company-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 1rem; }
-        .tag { background: #e0e7ff; color: #1e40af; font-size: 0.75rem; padding: 3px 8px; border-radius: 10px; font-weight: 500;}
+        .company-name { font-size: 1.4rem; font-weight: 700; color: var(--primary); margin-bottom: 0.8rem; line-height: 1.3;}
+        .company-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 1.5rem; }
+        .tag { background: rgba(37, 99, 235, 0.15); color: var(--primary); font-size: 0.75rem; padding: 4px 10px; border-radius: 12px; font-weight: 600;}
         
-        .detail-group { margin-bottom: 0.8rem; font-size: 0.9rem; }
-        .detail-label { font-weight: 600; color: var(--text-dark); display: block; }
-        .detail-text { color: var(--text-light); }
-        .comments-box { background: #f8fafc; padding: 10px; border-radius: 8px; font-size: 0.85rem; font-style: italic; border-left: 3px solid var(--secondary); margin-top: 10px;}
+        .detail-group { margin-bottom: 1rem; font-size: 0.95rem; }
+        .detail-label { font-weight: 600; color: var(--text-dark); display: block; margin-bottom: 2px;}
+        .detail-text { color: var(--text-light); display: block;}
+        
+        .comments-box { 
+            background: rgba(255,255,255,0.6); 
+            padding: 15px; 
+            border-radius: 12px; 
+            font-size: 0.9rem; 
+            font-style: italic; 
+            border-left: 4px solid var(--secondary); 
+            margin-top: 15px;
+            color: var(--text-dark);
+        }
 
         /* --- ADD COMPANY FORM --- */
         .form-container {
-            background: var(--white);
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            padding: 3rem;
+            border-radius: 24px;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 10px 40px var(--glass-shadow);
             max-width: 800px;
             margin: 0 auto;
         }
 
-        .form-container h3 { margin-bottom: 1.5rem; color: var(--primary); text-align: center;}
+        .form-container h3 { 
+            margin-bottom: 2rem; 
+            color: var(--primary); 
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
 
-        .form-group { margin-bottom: 1.2rem; }
-        .form-group label { display: block; font-weight: 500; margin-bottom: 0.5rem; font-size: 0.95rem; }
+        .form-group { margin-bottom: 1.5rem; }
+        .form-group label { display: block; font-weight: 600; margin-bottom: 0.5rem; font-size: 0.95rem; color: var(--text-dark);}
+        
         .form-group input[type="text"], 
         .form-group select, 
         .form-group textarea {
-            width: 100%; padding: 10px; border: 1px solid #d1d5db; border-radius: 6px; font-family: 'Poppins', sans-serif;
+            width: 100%; 
+            padding: 12px 15px; 
+            border: 1px solid rgba(0,0,0,0.1); 
+            border-radius: 10px; 
+            font-family: 'Poppins', sans-serif;
+            background: rgba(255,255,255,0.8);
+            font-size: 0.95rem;
+            transition: 0.3s;
         }
-        .form-group textarea { resize: vertical; min-height: 80px; }
 
-        .checkbox-group { display: flex; flex-wrap: wrap; gap: 15px; }
-        .checkbox-item { display: flex; align-items: center; gap: 5px; font-size: 0.9rem;}
+        .form-group input[type="text"]:focus, 
+        .form-group select:focus, 
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: #fff;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+        }
+
+        .form-group textarea { resize: vertical; min-height: 100px; }
+
+        .checkbox-group { display: flex; flex-wrap: wrap; gap: 15px; background: rgba(255,255,255,0.5); padding: 15px; border-radius: 10px; border: 1px solid rgba(0,0,0,0.05);}
+        .checkbox-item { display: flex; align-items: center; gap: 8px; font-size: 0.95rem; font-weight: 500; cursor: pointer;}
+        .checkbox-item input { width: 16px; height: 16px; cursor: pointer;}
 
         .submit-btn {
-            background: var(--primary); color: var(--white); border: none; padding: 12px 20px;
-            border-radius: 8px; cursor: pointer; width: 100%; font-size: 1.1rem; font-weight: 600; transition: 0.3s;
+            background: var(--primary); color: var(--white); border: none; padding: 15px 20px;
+            border-radius: 12px; cursor: pointer; width: 100%; font-size: 1.1rem; font-weight: 600; 
+            transition: all 0.3s ease; margin-top: 10px;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
         }
-        .submit-btn:hover { background: #152c66; }
+        .submit-btn:hover { 
+            background: #1d4ed8; 
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+        }
 
-        .system-msg { text-align: center; margin-top: 15px; font-weight: 500; color: #059669; display: none;}
+        .system-msg { 
+            text-align: center; margin-top: 20px; font-weight: 600; 
+            color: #047857; background: #d1fae5; padding: 12px; 
+            border-radius: 8px; display: none;
+            border: 1px solid #10b981;
+        }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 2rem; }
+            .form-container { padding: 1.5rem; }
+            main { padding: 1.5rem 1rem; }
+        }
     </style>
 </head>
 <body>
 
+    <img src="https://media.giphy.com/media/l41lO4vUq6vKnt4zC/giphy.gif" class="bg-gif gif1" alt="gear">
+    <img src="https://media.giphy.com/media/3o7TKSHA4D3P4G0Q3W/giphy.gif" class="bg-gif gif2" alt="blueprint">
+    <img src="https://media.giphy.com/media/26ufdipQqU2lhNA4g/giphy.gif" class="bg-gif gif3" alt="machine">
+    <img src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif" class="bg-gif gif4" alt="cog">
+
     <header>
-        <h2>JUNIOR PHILIPPINE SOCIETY OF MECHANICAL ENGINEERING - CTU MAIN CHAPTER</h2>
+        <h2>Junior Philippine Society of Mechanical Engineering - CTU Main</h2>
         <h1>PROJECT OJT NEXUS</h1>
         <nav>
             <button class="nav-btn active" onclick="switchView('directory')">Browse Directory</button>
@@ -232,12 +339,12 @@
                         <input type="text" id="compAddress" required placeholder="e.g. Mandaue City, Cebu">
                     </div>
 
-                    <div style="display: flex; gap: 15px;">
-                        <div class="form-group" style="flex: 1;">
+                    <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                        <div class="form-group" style="flex: 1; min-width: 250px;">
                             <label>Contact Person (HR/Engineer)</label>
                             <input type="text" id="compPerson" placeholder="e.g. Engr. Juan Dela Cruz">
                         </div>
-                        <div class="form-group" style="flex: 1;">
+                        <div class="form-group" style="flex: 1; min-width: 250px;">
                             <label>Contact Details (Email/Phone)</label>
                             <input type="text" id="compContact" placeholder="e.g. hr@company.com / 09123456789">
                         </div>
@@ -305,7 +412,7 @@
             }
         ];
 
-        // 1. Navigation Logic
+        // Navigation Logic
         function switchView(view) {
             document.querySelectorAll('.view-section').forEach(sec => sec.classList.remove('active'));
             document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
@@ -316,12 +423,11 @@
             if(view === 'directory') renderDirectory('All');
         }
 
-        // 2. Render Directory Logic
+        // Render Directory Logic
         function renderDirectory(filterField) {
             const grid = document.getElementById('directory-grid');
-            grid.innerHTML = ''; // clear current
+            grid.innerHTML = ''; 
 
-            // Update filter buttons UI
             document.querySelectorAll('.filter-btn').forEach(btn => {
                 btn.classList.remove('active');
                 if(btn.innerText === filterField || (btn.innerText === 'All Fields' && filterField === 'All')) {
@@ -329,18 +435,15 @@
                 }
             });
 
-            // Filter data
             const filteredData = filterField === 'All' 
                 ? companies 
                 : companies.filter(c => c.fields.includes(filterField));
 
-            // Render cards
             filteredData.forEach(comp => {
                 let tagsHTML = comp.fields.map(f => `<span class="tag">${f}</span>`).join('');
                 
-                // Format contacts (handles multiple contacts for the same company)
                 let contactsHTML = comp.contacts.map(c => `
-                    <span class="detail-text">• ${c.person ? c.person : 'N/A'} - ${c.details ? c.details : 'No details'}</span><br>
+                    <span class="detail-text">• ${c.person ? c.person : 'N/A'} - ${c.details ? c.details : 'No details'}</span>
                 `).join('');
 
                 let cardHTML = `
@@ -378,20 +481,19 @@
             });
 
             if(filteredData.length === 0) {
-                grid.innerHTML = `<p style="text-align:center; grid-column: 1/-1; color: #6b7280;">No companies found for this field yet. Be the first to contribute!</p>`;
+                grid.innerHTML = `<p style="text-align:center; grid-column: 1/-1; color: var(--text-light); font-size: 1.1rem; padding: 2rem;">No companies found for this field yet. Be the first to contribute!</p>`;
             }
         }
 
-        // 3. Filter Trigger
+        // Filter Trigger
         function filterDirectory(field) {
             renderDirectory(field);
         }
 
-        // 4. Handle Form Submission & Duplicate Logic
+        // Handle Form Submission & Duplicate Logic
         function handleFormSubmit(e) {
             e.preventDefault();
 
-            // Get Values
             const name = document.getElementById('compName').value.trim();
             const address = document.getElementById('compAddress').value.trim();
             const person = document.getElementById('compPerson').value.trim();
@@ -400,7 +502,6 @@
             const reqs = document.getElementById('compReq').value.trim();
             const comments = document.getElementById('compComments').value.trim();
             
-            // Get Checkboxes
             let selectedFields = [];
             document.querySelectorAll('.field-cb:checked').forEach(cb => selectedFields.push(cb.value));
 
@@ -409,11 +510,9 @@
                 return;
             }
 
-            // CHECK DUPLICATES LOGIC
             let existingCompanyIndex = companies.findIndex(c => c.name.toLowerCase() === name.toLowerCase());
 
             if(existingCompanyIndex !== -1) {
-                // Company exists! Check if contact is different
                 let comp = companies[existingCompanyIndex];
                 let contactExists = comp.contacts.some(c => 
                     c.person.toLowerCase() === person.toLowerCase() && 
@@ -424,23 +523,16 @@
                     alert("This company and contact person are already listed in the directory!");
                     return;
                 } else {
-                    // Add new contact to existing company
                     comp.contacts.push({ person: person, details: contactDetails });
-                    
-                    // Optionally update fields if new ones were selected
                     selectedFields.forEach(f => {
                         if(!comp.fields.includes(f)) comp.fields.push(f);
                     });
-                    
-                    // Append new comments
                     if(comments) {
                         comp.comments += ` | Update: ${comments}`;
                     }
-
                     showSuccessMessage("Company already exists. New contact details successfully appended!");
                 }
             } else {
-                // Create New Company
                 let newCompany = {
                     name: name,
                     address: address,
@@ -454,7 +546,6 @@
                 showSuccessMessage("New company successfully added to the directory!");
             }
 
-            // Reset Form
             document.getElementById('addCompanyForm').reset();
         }
 
