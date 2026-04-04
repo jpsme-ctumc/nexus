@@ -103,15 +103,14 @@
         .logo-img {
     width: 45px;
     height: 45px;
-    border-radius: 50%; /* Makes the image perfectly round */
-    object-fit: cover; /* Prevents the logo from stretching */
-    box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
-    background-color: var(--white); /* Helps if your logo is transparent */
+    object-fit: contain; /* Ensures the whole logo fits perfectly */
+    background-color: transparent; /* Removes the white background */
+    filter: drop-shadow(0 0 8px rgba(0, 240, 255, 0.4)); /* Makes the actual logo shape glow */
     transition: all 0.3s ease;
 }
 
 .header-brand:hover .logo-img {
-    box-shadow: 0 0 20px var(--primary);
+    filter: drop-shadow(0 0 15px var(--primary)); /* Stronger glow on hover */
     transform: scale(1.05);
 }
 
