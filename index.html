@@ -7,14 +7,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #1e3a8a; /* Bright Royal Blue */
-            --secondary: #d97706; /* Warm Gold */
-            --text-dark: #0f172a;
-            --text-light: #334155;
+            /* NEXUS COLOR PALETTE - Electric & Technical */
+            --nexus-dark: #0f172a;       /* Deep Navy Base */
+            --nexus-blue: #1e40af;       /* Vibrant Electric Blue */
+            --nexus-orange: #f97316;     /* Vibrant Nexus Orange */
+            --nexus-cyan: #22d3ee;       /* Highlight Cyan */
+            --glass-bg: rgba(255, 255, 255, 0.04); /* Transparent glass */
+            --glass-border: rgba(255, 255, 255, 0.08);
             --white: #ffffff;
-            --glass-bg: rgba(255, 255, 255, 0.65);
-            --glass-border: rgba(255, 255, 255, 0.9);
-            --glass-shadow: rgba(0, 0, 0, 0.1);
+            --text-dark: #cbd5e1;       /* Light gray text for dark bg */
+            --text-muted: #94a3b8;
         }
 
         * {
@@ -26,10 +28,8 @@
         }
 
         body {
-            /* VIBRANT PASTEL GRADIENT */
-            background: linear-gradient(-45deg, #ffc3a0, #ffafbd, #a1c4fd, #c2e9fb, #e0c3fc);
-            background-size: 300% 300%;
-            animation: gradientBG 10s ease infinite;
+            /* VIBRANT NEXUS GRADIENT */
+            background: radial-gradient(circle at 50% 50%, #1e40af 0%, #0f172a 70%, #0a0f1e 100%);
             color: var(--text-dark);
             min-height: 100vh;
             display: flex;
@@ -38,38 +38,35 @@
             position: relative;
         }
 
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        /* --- FLOATING MACHINE GIFS --- */
-        .bg-gif {
+        /* --- AESTHETIC TRANSPARENT GEAR WATERMARK BACKGROUND --- */
+        body::before {
+            content: '';
             position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             z-index: -1;
-            opacity: 0.5; 
-            pointer-events: none;
-            border-radius: 15px;
-            box-shadow: 0 0 20px rgba(255,255,255,0.8);
+            opacity: 0.15; /* Subtly visible watermark */
+            /* Generate a custom, transparent gear pattern watermark in an engineering style.
+               It should be large cogs and clockwork covering the entire screen. */
+            background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="1000" height="1000" viewBox="0 0 1000 1000"%3E%3Cpath fill="%23FFFFFF" d="M1000 0H0v1000h1000V0zM170 170c-25 0-45 20-45 45s20 45 45 45 45-20 45-45-20-45-45-45zM226 314c-11 0-20 9-20 20s9 20 20 20 20-9 20-20-9-20-20-20zM286 443c-6 0-11 5-11 11s5 11 11 11 11-5 11-11-5-11-11-11zM114 433c-3 0-6 3-6 6s3 6 6 6 6-3 6-6-3-6-6-6zM324 532c-3 0-6 3-6 6s3 6 6 6 6-3 6-6-3-6-6-6zM312 600c0 14-11 25-25 25s-25-11-25-25 11-25 25-25 25 11 25 25zM157 714c0 11-9 20-20 20s-20-9-20-20 9-20 20-20 20 9 20 20zM218 805c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM418 805c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM418 705c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM518 705c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM618 705c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM718 705c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM818 705c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM918 705c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM918 605c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM918 505c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM918 405c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM918 305c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM918 205c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM918 105c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM818 105c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM718 105c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM618 105c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM518 105c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM418 105c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM318 105c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM218 105c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM118 105c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM314 226c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20zM443 286c0-6-5-11-11-11s-11 5-11 11 5 11 11 11 11-5 11-11zM433 114c0-3-3-6-6-6s-6 3-6 6 3 6 6 6 6-3 6-6zM532 324c0-3-3-6-6-6s-6 3-6 6 3 6 6 6 6-3 6-6zM600 312c14 0 25-11 25-25s-11-25-25-25-25 11-25 25 11 25 25 25zM714 157c11 0 20-9 20-20s-9-20-20-20-20 9-20 20 9 20 20 20zM805 218c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM805 418c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM705 418c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM705 518c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM705 618c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM705 718c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM705 818c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM705 918c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM605 918c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM505 918c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM405 918c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM305 918c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM205 918c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM105 918c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM105 818c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM105 718c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM105 618c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM105 518c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM105 418c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM105 318c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM105 218c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM105 118c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM218 314c0 11 9 20 20 20s20-9 20-20-9-20-20-20-20 9-20 20zM286 443c0 6 5 11 11 11s11-5 11-11-5-11-11-11-11 5-11 11zM114 433c0 3 3 6 6 6s6-3 6-6-3-6-6-6-6 3-6 6zM324 532c0 3 3 6 6 6s6-3 6-6-3-6-6-6-6 3-6 6zM312 600c0 14 11 25 25 25s25-11 25-25-11-25-25-25-25 11-25 25 11 25 25 25zM157 714c0 11 9 20 20 20s20-9 20-20-9-20-20-20-20 9-20 20zM218 805c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM418 805c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM418 705c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM518 705c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM618 705c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM718 705c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM818 705c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM918 705c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM918 605c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM918 505c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM918 405c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM918 305c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM918 205c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM918 105c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM818 105c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM718 105c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM618 105c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM518 105c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM418 105c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM318 105c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM218 105c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM118 105c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM314 226c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20zM443 286c0-6-5-11-11-11s-11 5-11 11 5 11 11 11 11-5 11-11zM433 114c0-3-3-6-6-6s-6 3-6 6 3 6 6 6 6-3 6-6zM532 324c0-3-3-6-6-6s-6 3-6 6 3 6 6 6 6-3 6-6zM600 312c14 0 25-11 25-25s-11-25-25-25-25 11-25 25 11 25 25 25zM714 157c11 0 20-9 20-20s-9-20-20-20-20 9-20 20 9 20 20 20zM805 218c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM805 418c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM705 418c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM705 518c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM705 618c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM705 718c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM705 818c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM705 918c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM605 918c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM505 918c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM405 918c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM305 918c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM205 918c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM105 918c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM105 818c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM105 718c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM105 618c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM105 518c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM105 418c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM105 318c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM105 218c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM105 118c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM218 314c0 11 9 20 20 20s20-9 20-20-9-20-20-20-20 9-20 20zM286 443c0 6 5 11 11 11s11-5 11-11-5-11-11-11-11 5-11 11zM114 433c0 3 3 6 6 6s6-3 6-6-3-6-6-6-6 3-6 6zM324 532c0 3 3 6 6 6s6-3 6-6-3-6-6-6-6 3-6 6zM312 600c0 14 11 25 25 25s25-11 25-25-11-25-25-25-25 11-25 25 11 25 25 25zM157 714c0 11 9 20 20 20s20-9 20-20-9-20-20-20-20 9-20 20zM218 805c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM418 805c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM418 705c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM518 705c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM618 705c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM718 705c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM818 705c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM918 705c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM918 605c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM918 505c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM918 405c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM918 305c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM918 205c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM918 105c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM818 105c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM718 105c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM618 105c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM518 105c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM418 105c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM318 105c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM218 105c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15zM118 105c0 8 7 15 15 15s15-7 15-15-7-15-15-15-15 7-15 15 7 15 15 15z"%3E%3C/path%3E%3C/svg%3E');
+            background-size: cover;
+            background-repeat: no-repeat;
+            mix-blend-mode: overlay; /* Blends the pattern with the gradient base */
         }
-
-        .gif1 { top: 15%; left: 3%; width: 280px; transform: rotate(5deg); }
-        .gif2 { bottom: 8%; right: 3%; width: 320px; transform: rotate(-10deg); }
-        .gif3 { top: 35%; right: 5%; width: 250px; transform: rotate(15deg); }
-        .gif4 { bottom: 25%; left: 4%; width: 220px; transform: rotate(-8deg); }
 
         /* --- PROFESSIONAL HEADER --- */
         header {
-            background: rgba(255, 255, 255, 0.85);
+            background: rgba(15, 23, 42, 0.85); /* Nexus Dark, frosted */
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
-            border-bottom: 1px solid var(--glass-border);
+            border-bottom: 2px solid var(--nexus-blue);
             padding: 0.8rem 3rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 4px 20px var(--glass-shadow);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
             position: sticky;
             top: 0;
             z-index: 100;
@@ -86,7 +83,7 @@
         .logo-placeholder {
             width: 45px;
             height: 45px;
-            background: var(--primary);
+            background: var(--nexus-orange);
             color: white;
             border-radius: 50%;
             display: flex;
@@ -94,20 +91,20 @@
             align-items: center;
             font-weight: 800;
             font-size: 0.8rem;
-            box-shadow: 0 4px 10px rgba(30, 58, 138, 0.3);
+            box-shadow: 0 4px 10px rgba(249, 115, 22, 0.3);
         }
 
         .brand-text h1 {
             font-size: 1.2rem;
             font-weight: 800;
-            color: var(--primary);
+            color: var(--nexus-cyan);
             line-height: 1.1;
         }
         
         .brand-text h2 {
             font-size: 0.75rem;
             font-weight: 500;
-            color: var(--text-light);
+            color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 1px;
         }
@@ -122,7 +119,7 @@
             text-decoration: none;
             background: transparent;
             border: none;
-            color: var(--text-light);
+            color: var(--text-muted);
             font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
@@ -132,14 +129,14 @@
         }
 
         .main-tab:hover {
-            color: var(--primary);
-            background: rgba(30, 58, 138, 0.05);
+            color: var(--nexus-cyan);
+            background: rgba(34, 211, 238, 0.05);
         }
 
         .main-tab.active {
-            color: var(--primary);
-            background: rgba(30, 58, 138, 0.1);
-            box-shadow: inset 0 -3px 0 var(--primary);
+            color: var(--white);
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: inset 0 -3px 0 var(--nexus-orange);
         }
 
         /* --- MAIN CONTAINER --- */
@@ -163,7 +160,7 @@
             border: 2px solid var(--glass-border);
             border-radius: 20px;
             padding: 4rem 3rem;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
             animation: slideUp 0.6s ease-out;
         }
 
@@ -175,11 +172,12 @@
         .content-card h2 {
             font-size: 2.5rem;
             font-weight: 800;
-            color: var(--primary);
+            color: var(--nexus-cyan);
             margin-bottom: 1.5rem;
             text-align: center;
             text-transform: uppercase;
             letter-spacing: 1px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
         }
 
         .content-card p {
@@ -191,8 +189,8 @@
         }
 
         .highlight-box {
-            background: rgba(30, 58, 138, 0.05);
-            border-left: 5px solid var(--secondary);
+            background: rgba(249, 115, 22, 0.05); /* Orange tint */
+            border-left: 5px solid var(--nexus-orange);
             padding: 1.5rem;
             border-radius: 12px;
             margin-top: 2rem;
@@ -200,9 +198,10 @@
         }
 
         .highlight-box h3 {
-            color: var(--primary);
+            color: var(--nexus-orange);
             margin-bottom: 10px;
             font-size: 1.3rem;
+            font-weight: 700;
         }
 
         /* CTA Button */
@@ -214,7 +213,7 @@
         .cta-btn {
             display: inline-block;
             text-decoration: none;
-            background: var(--primary);
+            background: var(--nexus-orange);
             color: var(--white);
             padding: 14px 35px;
             border-radius: 30px;
@@ -222,14 +221,14 @@
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
-            box-shadow: 0 10px 25px rgba(30, 58, 138, 0.4);
+            box-shadow: 0 10px 25px rgba(249, 115, 22, 0.4);
             transition: all 0.3s ease;
         }
 
         .cta-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(30, 58, 138, 0.6);
-            background: #152c66;
+            box-shadow: 0 15px 30px rgba(249, 115, 22, 0.6);
+            background: #c2410c;
         }
 
         /* Contact Details Placholder */
@@ -242,24 +241,21 @@
         }
 
         .contact-item {
-            background: rgba(255,255,255,0.6);
+            background: rgba(255,255,255,0.02);
             padding: 2rem 1rem;
             border-radius: 15px;
-            border: 1px dashed var(--primary);
+            border: 1px dashed var(--nexus-blue);
         }
 
         @media (max-width: 768px) {
             header { flex-direction: column; gap: 15px; padding: 1.5rem 1rem; }
             .content-card { padding: 2.5rem 1.5rem; }
             .content-card h2 { font-size: 2rem; }
+            body::before { opacity: 0.1; }
         }
     </style>
 </head>
 <body>
-
-    <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExMjRteGhlMWp0MzduMmxrcHJocnd0czlxdGNuNnlrOXlwdWZ2NXk3ZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l41lO4vUq6vKnt4zC/giphy.webp" class="bg-gif gif1" alt="gear">
-    <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3p5NnB4aWZxaWh6MGwyeGNuMTI3ZDUzeWNtc2R3OWU0bTdvYWN6YSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7TKSHA4D3P4G0Q3W/giphy.webp" class="bg-gif gif2" alt="blueprint">
-    <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExazdzMGpsdWt4ZGg4ZmQ4MzJ3aXk4NXYzc2JrdG1rd3FrcDZxYzE3MyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/26ufdipQqU2lhNA4g/giphy.webp" class="bg-gif gif3" alt="machine">
 
     <header>
         <a href="index.html" class="header-brand">
@@ -295,22 +291,22 @@
 
         <section id="contact-section" class="content-card">
             <h2>Contact Us</h2>
-            <p style="text-align: center;">Have questions about the directory or want to partner with JPSME CTU Main? Reach out to us through the following channels:</p>
+            <p style="text-align: center; color: var(--text-muted);">Have questions about the directory or want to partner with JPSME CTU Main? Reach out to us through the following channels:</p>
             
             <div class="contact-grid">
                 <div class="contact-item">
-                    <h3 style="color: var(--primary); margin-bottom: 10px;">📧 Email Us</h3>
-                    <p style="color: var(--text-light); font-size: 0.95rem;">jpsme.ctumain@example.com</p>
+                    <h3 style="color: var(--nexus-cyan); margin-bottom: 10px;">📧 Email Us</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">jpsme.ctumain@example.com</p>
                 </div>
                 
                 <div class="contact-item">
-                    <h3 style="color: var(--primary); margin-bottom: 10px;">📘 Facebook</h3>
-                    <p style="color: var(--text-light); font-size: 0.95rem;">@JPSMECTUMain</p>
+                    <h3 style="color: var(--nexus-cyan); margin-bottom: 10px;">📘 Facebook</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">@JPSMECTUMain</p>
                 </div>
 
                 <div class="contact-item">
-                    <h3 style="color: var(--primary); margin-bottom: 10px;">📍 Office</h3>
-                    <p style="color: var(--text-light); font-size: 0.95rem;">M.J. Cuenco Ave, Cebu City</p>
+                    <h3 style="color: var(--nexus-cyan); margin-bottom: 10px;">📍 Office</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">M.J. Cuenco Ave, Cebu City</p>
                 </div>
             </div>
         </section>
