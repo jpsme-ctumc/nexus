@@ -239,6 +239,52 @@
             border-top: 4px solid var(--primary); transition: all 0.3s ease; position: relative;
             overflow: hidden;
         }
+        /* --- ADMIN DELETE FEATURES --- */
+        .delete-btn {
+            display: none; /* Hidden until admin mode is active */
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            background: rgba(255, 71, 87, 0.1);
+            color: #ff4757;
+            border: 1px solid rgba(255, 71, 87, 0.3);
+            border-radius: 8px;
+            padding: 6px 10px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .delete-btn:hover {
+            background: #ff4757;
+            color: var(--white);
+            box-shadow: 0 0 15px rgba(255, 71, 87, 0.4);
+            transform: scale(1.05);
+        }
+
+        body.admin-mode .delete-btn {
+            display: block; /* Reveals the button */
+        }
+
+        .admin-trigger {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: transparent;
+            color: var(--text-muted);
+            border: none;
+            font-size: 0.8rem;
+            cursor: pointer;
+            opacity: 0.3;
+            transition: 0.3s;
+            z-index: 1000;
+        }
+        .admin-trigger:hover {
+            color: var(--primary);
+            opacity: 1;
+        }
 
         .company-card::before {
             content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
@@ -250,6 +296,7 @@
             transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0, 240, 255, 0.15);
             border-color: rgba(0, 240, 255, 0.4);
         }
+        
 
         .card-content { position: relative; z-index: 1; }
 
@@ -421,6 +468,7 @@
                 </form>
             </div>
         </section>
+        <button class="admin-trigger" onclick="toggleAdmin()">Admin Mode</button>
     </main>
 
     <script>
@@ -483,6 +531,7 @@
                 let cardHTML = `
                     <div class="company-card">
                         <div class="card-content">
+                        <button class="delete-btn" onclick="deleteCompany('${comp.name}')">🗑️ Delete</button>
                             <div class="company-name">${comp.name}</div>
                             <div class="company-tags">${tagsHTML}</div>
                             
@@ -583,7 +632,46 @@
             msgBox.style.display = 'block';
             setTimeout(() => { msgBox.style.display = 'none'; }, 4000);
         }
+// --- DELETE LOGIC ---
+        function deleteCompany(companyName) {
+            const isConfirmed = confirm(`Are you sure you want to delete "${companyName}" from the directory?`);
+            
+            if (isConfirmed) {
+                companies = companies.filter(c => c.name !== companyName);
+                
+                let activeFilter = 'All';
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    if(btn.classList.contains('active')) {
+                        activeFilter = btn.innerText === 'All Fields' ? 'All' : btn.innerText;
+                    }
+                });
 
+                renderDirectory(activeFilter);
+            }
+        }
+
+        // --- ADMIN LOGIN LOGIC ---
+        let isAdmin = false;
+
+        function toggleAdmin() {
+            if (isAdmin) {
+                document.body.classList.remove('admin-mode');
+                isAdmin = false;
+                alert("Admin mode locked. Delete buttons hidden.");
+                return;
+            }
+
+            const passcode = prompt("Enter JPSME Officer Passcode:");
+            
+            // The secret password is NEXUS2026
+            if (passcode === "NEXUS2026") { 
+                document.body.classList.add('admin-mode');
+                isAdmin = true;
+                alert("Admin access granted! You can now delete entries.");
+            } else if (passcode !== null) {
+                alert("Incorrect passcode. Access denied.");
+            }
+        }
         // Init
         renderDirectory('All');
     </script>
