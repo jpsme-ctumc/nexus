@@ -7,14 +7,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #2563eb; /* Bright Royal Blue */
-            --secondary: #f59e0b; /* Warm Gold */
-            --text-dark: #1e293b;
-            --text-light: #475569;
+            --primary: #1e3a8a; 
+            --secondary: #d97706; 
+            --text-dark: #0f172a;
+            --text-light: #334155;
             --white: #ffffff;
-            --glass-bg: rgba(255, 255, 255, 0.55);
-            --glass-border: rgba(255, 255, 255, 0.8);
-            --glass-shadow: rgba(0, 0, 0, 0.05);
+            --glass-bg: rgba(255, 255, 255, 0.65); /* More frosted glass */
+            --glass-border: rgba(255, 255, 255, 0.9);
+            --glass-shadow: rgba(0, 0, 0, 0.1);
         }
 
         * {
@@ -25,10 +25,10 @@
         }
 
         body {
-            /* Animated Pastel Gradient Background */
-            background: linear-gradient(-45deg, #fbc2eb, #a18cd1, #fad0c4, #c2e9fb);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
+            /* VIBRANT PASTEL GRADIENT - Faster animation so it's obvious */
+            background: linear-gradient(-45deg, #ffc3a0, #ffafbd, #a1c4fd, #c2e9fb, #e0c3fc);
+            background-size: 300% 300%;
+            animation: gradientBG 8s ease infinite;
             color: var(--text-dark);
             min-height: 100vh;
             display: flex;
@@ -43,79 +43,77 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* --- FLOATING MACHINE GIFS --- */
+        /* --- OBVIOUS FLOATING MACHINE GIFS --- */
         .bg-gif {
             position: fixed;
             z-index: -1;
-            opacity: 0.12; /* Very subtle so it doesn't distract */
-            mix-blend-mode: multiply; /* Blends nicely with the pastel colors */
+            opacity: 0.6; /* Increased from 0.12 to 0.6 so they are highly visible */
             pointer-events: none;
-            border-radius: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(255,255,255,0.8); /* Added white glow */
         }
 
-        /* You can swap these links with any other machine GIFs you prefer */
-        .gif1 { top: 5%; left: 2%; width: 300px; transform: rotate(10deg); }
-        .gif2 { bottom: 5%; right: 2%; width: 350px; transform: rotate(-15deg); }
-        .gif3 { top: 40%; left: 75%; width: 250px; transform: rotate(5deg); }
-        .gif4 { bottom: 30%; left: 5%; width: 200px; transform: rotate(-5deg); }
+        .gif1 { top: 8%; left: 3%; width: 280px; transform: rotate(5deg); }
+        .gif2 { bottom: 8%; right: 3%; width: 320px; transform: rotate(-10deg); }
+        .gif3 { top: 35%; right: 5%; width: 250px; transform: rotate(15deg); }
+        .gif4 { bottom: 25%; left: 4%; width: 220px; transform: rotate(-8deg); }
 
         /* --- HEADER --- */
         header {
-            background: rgba(255, 255, 255, 0.3);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border-bottom: 1px solid var(--glass-border);
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 2px solid var(--glass-border);
             padding: 2rem 2rem;
             text-align: center;
-            box-shadow: 0 4px 30px var(--glass-shadow);
+            box-shadow: 0 10px 30px var(--glass-shadow);
             position: sticky;
             top: 0;
             z-index: 100;
         }
 
         header h2 {
-            font-size: 0.9rem;
-            font-weight: 500;
+            font-size: 0.95rem;
+            font-weight: 600;
             letter-spacing: 1.5px;
-            color: var(--text-light);
+            color: var(--text-dark);
             text-transform: uppercase;
         }
 
         header h1 {
-            font-size: 2.8rem;
+            font-size: 3rem;
             font-weight: 800;
             color: var(--primary);
             margin-top: 0.5rem;
-            text-shadow: 2px 2px 4px rgba(255,255,255,0.5);
+            text-shadow: 2px 2px 0px #fff;
         }
 
         /* --- NAVIGATION --- */
         nav {
             display: flex;
             justify-content: center;
-            gap: 1rem;
+            gap: 1.5rem;
             margin-top: 1.5rem;
         }
 
         .nav-btn {
-            background: var(--glass-bg);
+            background: rgba(255, 255, 255, 0.8);
             color: var(--primary);
-            border: 1px solid var(--glass-border);
-            padding: 10px 24px;
+            border: 2px solid var(--primary);
+            padding: 12px 28px;
             border-radius: 30px;
             cursor: pointer;
-            font-weight: 600;
-            font-size: 0.95rem;
+            font-weight: 700;
+            font-size: 1rem;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
         .nav-btn:hover, .nav-btn.active {
             background: var(--primary);
-            border-color: var(--primary);
             color: var(--white);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(37, 99, 235, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(37, 99, 235, 0.3);
         }
 
         /* --- MAIN CONTAINER --- */
@@ -138,7 +136,7 @@
         }
 
         @keyframes slideUp {
-            from { opacity: 0; transform: translateY(20px); }
+            from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
@@ -147,83 +145,84 @@
             display: flex;
             flex-wrap: wrap;
             gap: 12px;
-            margin-bottom: 2.5rem;
+            margin-bottom: 3rem;
             justify-content: center;
         }
 
         .filter-btn {
-            background: rgba(255, 255, 255, 0.7);
-            border: 1px solid var(--glass-border);
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid transparent;
             color: var(--text-dark);
-            padding: 8px 18px;
+            padding: 10px 20px;
             border-radius: 20px;
             cursor: pointer;
-            font-size: 0.9rem;
-            font-weight: 500;
+            font-size: 0.95rem;
+            font-weight: 600;
             transition: 0.3s;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
         }
 
         .filter-btn:hover, .filter-btn.active {
             background: var(--secondary);
             color: var(--white);
             border-color: var(--secondary);
-            box-shadow: 0 4px 10px rgba(245, 158, 11, 0.3);
+            transform: scale(1.05);
         }
 
         .directory-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
             gap: 2rem;
         }
 
         /* Glassmorphism Cards */
         .company-card {
             background: var(--glass-bg);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 2px solid var(--glass-border);
             border-radius: 20px;
             padding: 2rem;
-            box-shadow: 0 8px 32px var(--glass-shadow);
-            border-top: 5px solid var(--primary);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            border-top: 6px solid var(--primary);
             transition: all 0.3s ease;
         }
 
         .company-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
-            background: rgba(255, 255, 255, 0.7);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 45px rgba(0,0,0,0.15);
+            background: rgba(255, 255, 255, 0.85);
         }
 
-        .company-name { font-size: 1.4rem; font-weight: 700; color: var(--primary); margin-bottom: 0.8rem; line-height: 1.3;}
+        .company-name { font-size: 1.5rem; font-weight: 800; color: var(--primary); margin-bottom: 1rem; line-height: 1.3;}
         .company-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 1.5rem; }
-        .tag { background: rgba(37, 99, 235, 0.15); color: var(--primary); font-size: 0.75rem; padding: 4px 10px; border-radius: 12px; font-weight: 600;}
+        .tag { background: var(--primary); color: #fff; font-size: 0.8rem; padding: 5px 12px; border-radius: 12px; font-weight: 600;}
         
-        .detail-group { margin-bottom: 1rem; font-size: 0.95rem; }
-        .detail-label { font-weight: 600; color: var(--text-dark); display: block; margin-bottom: 2px;}
-        .detail-text { color: var(--text-light); display: block;}
+        .detail-group { margin-bottom: 1.2rem; font-size: 1rem; }
+        .detail-label { font-weight: 700; color: var(--text-dark); display: block; margin-bottom: 2px;}
+        .detail-text { color: var(--text-light); display: block; font-weight: 500;}
         
         .comments-box { 
-            background: rgba(255,255,255,0.6); 
+            background: rgba(255,255,255,0.8); 
             padding: 15px; 
             border-radius: 12px; 
-            font-size: 0.9rem; 
+            font-size: 0.95rem; 
             font-style: italic; 
-            border-left: 4px solid var(--secondary); 
-            margin-top: 15px;
+            border-left: 5px solid var(--secondary); 
+            margin-top: 20px;
             color: var(--text-dark);
+            font-weight: 500;
         }
 
         /* --- ADD COMPANY FORM --- */
         .form-container {
             background: var(--glass-bg);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             padding: 3rem;
             border-radius: 24px;
-            border: 1px solid var(--glass-border);
-            box-shadow: 0 10px 40px var(--glass-shadow);
+            border: 2px solid var(--glass-border);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.15);
             max-width: 800px;
             margin: 0 auto;
         }
@@ -232,24 +231,26 @@
             margin-bottom: 2rem; 
             color: var(--primary); 
             text-align: center;
-            font-size: 1.8rem;
-            font-weight: 700;
+            font-size: 2rem;
+            font-weight: 800;
         }
 
         .form-group { margin-bottom: 1.5rem; }
-        .form-group label { display: block; font-weight: 600; margin-bottom: 0.5rem; font-size: 0.95rem; color: var(--text-dark);}
+        .form-group label { display: block; font-weight: 700; margin-bottom: 0.5rem; font-size: 1rem; color: var(--text-dark);}
         
         .form-group input[type="text"], 
         .form-group select, 
         .form-group textarea {
             width: 100%; 
-            padding: 12px 15px; 
-            border: 1px solid rgba(0,0,0,0.1); 
-            border-radius: 10px; 
+            padding: 14px 15px; 
+            border: 2px solid rgba(255,255,255,0.5); 
+            border-radius: 12px; 
             font-family: 'Poppins', sans-serif;
-            background: rgba(255,255,255,0.8);
-            font-size: 0.95rem;
+            background: rgba(255,255,255,0.9);
+            font-size: 1rem;
+            font-weight: 500;
             transition: 0.3s;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
         }
 
         .form-group input[type="text"]:focus, 
@@ -258,47 +259,42 @@
             outline: none;
             border-color: var(--primary);
             background: #fff;
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.2);
         }
 
-        .form-group textarea { resize: vertical; min-height: 100px; }
+        .form-group textarea { resize: vertical; min-height: 120px; }
 
-        .checkbox-group { display: flex; flex-wrap: wrap; gap: 15px; background: rgba(255,255,255,0.5); padding: 15px; border-radius: 10px; border: 1px solid rgba(0,0,0,0.05);}
-        .checkbox-item { display: flex; align-items: center; gap: 8px; font-size: 0.95rem; font-weight: 500; cursor: pointer;}
-        .checkbox-item input { width: 16px; height: 16px; cursor: pointer;}
+        .checkbox-group { display: flex; flex-wrap: wrap; gap: 15px; background: rgba(255,255,255,0.7); padding: 20px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.5);}
+        .checkbox-item { display: flex; align-items: center; gap: 8px; font-size: 1rem; font-weight: 600; cursor: pointer;}
+        .checkbox-item input { width: 18px; height: 18px; cursor: pointer;}
 
         .submit-btn {
-            background: var(--primary); color: var(--white); border: none; padding: 15px 20px;
-            border-radius: 12px; cursor: pointer; width: 100%; font-size: 1.1rem; font-weight: 600; 
-            transition: all 0.3s ease; margin-top: 10px;
-            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+            background: var(--primary); color: var(--white); border: none; padding: 16px 20px;
+            border-radius: 12px; cursor: pointer; width: 100%; font-size: 1.2rem; font-weight: 700; 
+            transition: all 0.3s ease; margin-top: 15px;
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
+            text-transform: uppercase;
         }
         .submit-btn:hover { 
-            background: #1d4ed8; 
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+            background: #152c66; 
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(37, 99, 235, 0.5);
         }
 
         .system-msg { 
-            text-align: center; margin-top: 20px; font-weight: 600; 
-            color: #047857; background: #d1fae5; padding: 12px; 
-            border-radius: 8px; display: none;
-            border: 1px solid #10b981;
-        }
-
-        @media (max-width: 768px) {
-            header h1 { font-size: 2rem; }
-            .form-container { padding: 1.5rem; }
-            main { padding: 1.5rem 1rem; }
+            text-align: center; margin-top: 20px; font-weight: 700; 
+            color: #047857; background: #d1fae5; padding: 15px; 
+            border-radius: 12px; display: none;
+            border: 2px solid #10b981;
+            font-size: 1.1rem;
         }
     </style>
 </head>
 <body>
 
-    <img src="https://media.giphy.com/media/l41lO4vUq6vKnt4zC/giphy.gif" class="bg-gif gif1" alt="gear">
-    <img src="https://media.giphy.com/media/3o7TKSHA4D3P4G0Q3W/giphy.gif" class="bg-gif gif2" alt="blueprint">
-    <img src="https://media.giphy.com/media/26ufdipQqU2lhNA4g/giphy.gif" class="bg-gif gif3" alt="machine">
-    <img src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif" class="bg-gif gif4" alt="cog">
+    <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExMjRteGhlMWp0MzduMmxrcHJocnd0czlxdGNuNnlrOXlwdWZ2NXk3ZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l41lO4vUq6vKnt4zC/giphy.webp" class="bg-gif gif1" alt="gear">
+    <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3p5NnB4aWZxaWh6MGwyeGNuMTI3ZDUzeWNtc2R3OWU0bTdvYWN6YSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7TKSHA4D3P4G0Q3W/giphy.webp" class="bg-gif gif2" alt="blueprint">
+    <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExazdzMGpsdWt4ZGg4ZmQ4MzJ3aXk4NXYzc2JrdG1rd3FrcDZxYzE3MyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/26ufdipQqU2lhNA4g/giphy.webp" class="bg-gif gif3" alt="machine">
 
     <header>
         <h2>Junior Philippine Society of Mechanical Engineering - CTU Main</h2>
@@ -481,7 +477,7 @@
             });
 
             if(filteredData.length === 0) {
-                grid.innerHTML = `<p style="text-align:center; grid-column: 1/-1; color: var(--text-light); font-size: 1.1rem; padding: 2rem;">No companies found for this field yet. Be the first to contribute!</p>`;
+                grid.innerHTML = `<p style="text-align:center; grid-column: 1/-1; color: var(--text-dark); font-size: 1.2rem; font-weight: 600; padding: 2rem;">No companies found for this field yet. Be the first to contribute!</p>`;
             }
         }
 
