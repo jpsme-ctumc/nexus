@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Directory | Project OJT NEXUS</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
             /* CELESTIAL NEXUS COLOR PALETTE */
             --space-dark: #030712;       
             --space-blue: #0f172a;       
-            --primary: #00f0ff;          /* Glowing Cyan */
-            --secondary: #b026ff;        /* Nebula Purple */
+            --primary: #00f0ff;          
+            --secondary: #b026ff;        
             
             --glass-bg: rgba(15, 23, 42, 0.75); 
             --glass-border: rgba(0, 240, 255, 0.2); 
@@ -27,6 +27,7 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
         }
 
         body {
@@ -38,6 +39,7 @@
             display: flex;
             flex-direction: column;
             position: relative;
+            overflow-x: hidden;
         }
 
         @keyframes cosmicDrift {
@@ -46,19 +48,20 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* --- AESTHETIC TRANSPARENT GEAR WATERMARK --- */
+        /* --- SUBTLE GEAR WATERMARK --- */
         body::before {
             content: '';
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -1; opacity: 0.04;
-            background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="1000" height="1000" viewBox="0 0 1000 1000"%3E%3Cpath fill="%2300f0ff" d="M1000 0H0v1000h1000V0zM170 170c-25 0-45 20-45 45s20 45 45 45 45-20 45-45-20-45-45-45zM226 314c-11 0-20 9-20 20s9 20 20 20 20-9 20-20-9-20-20-20zM286 443c-6 0-11 5-11 11s5 11 11 11 11-5 11-11-5-11-11-11zM114 433c-3 0-6 3-6 6s3 6 6 6 6-3 6-6-3-6-6-6zM324 532c-3 0-6 3-6 6s3 6 6 6 6-3 6-6-3-6-6-6zM312 600c0 14-11 25-25 25s-25-11-25-25 11-25 25-25 25 11 25 25zM157 714c0 11-9 20-20 20s-20-9-20-20 9-20 20-20 20 9 20 20zM218 805c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM418 805c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM418 705c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM518 705c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM618 705c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM718 705c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM818 705c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM918 705c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM918 605c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM918 505c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM918 405c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM918 305c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM918 205c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM918 105c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM818 105c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM718 105c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM618 105c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM518 105c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM418 105c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM318 105c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM218 105c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM118 105c0 8-7 15-15 15s-15-7-15-15 7-15 15-15 15 7 15 15zM314 226c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20zM443 286c0-6-5-11-11-11s-11 5-11 11 5 11 11 11 11-5 11-11zM433 114c0-3-3-6-6-6s-6 3-6 6 3 6 6 6 6-3 6-6zM532 324c0-3-3-6-6-6s-6 3-6 6 3 6 6 6 6-3 6-6zM600 312c14 0 25-11 25-25s-11-25-25-25-25 11-25 25 11 25 25 25zM714 157c11 0 20-9 20-20s-9-20-20-20-20 9-20 20 9 20 20 20zM805 218c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM805 418c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM705 418c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM705 518c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM705 618c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM705 718c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM705 818c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM705 918c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM605 918c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM505 918c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM405 918c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM305 918c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM205 918c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM105 918c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM105 818c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM105 718c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM105 618c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM105 518c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM105 418c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM105 318c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM105 218c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15zM105 118c8 0 15-7 15-15s-7-15-15-15-15 7-15 15 7 15 15 15z"%3E%3C/path%3E%3C/svg%3E');
-            background-size: 500px;
-            mix-blend-mode: screen; 
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -2;
+            opacity: 0.03;
+            background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"%3E%3Cpath fill="%2300f0ff" d="M50 20c-16.5 0-30 13.5-30 30s13.5 30 30 30 30-13.5 30-30-13.5-30-30-30zm0 45c-8.3 0-15-6.7-15-15s6.7-15 15-15 15 6.7 15 15-6.7 15-15 15zM45 5h10v12H45zm0 71h10v12H45zM5 45h12v10H5zm71 0h12v10H76zM17.5 17.5l8.5 8.5 7.1-7.1-8.5-8.5zm48 48l8.5 8.5 7.1-7.1-8.5-8.5zM74 17.5l-8.5 8.5-7.1-7.1 8.5-8.5zM26 65.5l-8.5 8.5-7.1-7.1 8.5-8.5z"/%3E%3C/svg%3E');
+            background-size: 150px 150px;
         }
 
-        /* --- HEADER --- */
+        /* --- IDENTICAL HEADER FROM HOME PAGE --- */
         header {
-            background: rgba(3, 7, 18, 0.8);
+            background: rgba(3, 7, 18, 0.85);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--glass-border);
@@ -76,30 +79,37 @@
             display: flex;
             align-items: center;
             gap: 15px;
-            flex: 1;
+            flex: 1; 
         }
 
         .logo-placeholder {
-            width: 40px;
-            height: 40px;
+            width: 45px;
+            height: 45px;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: var(--white);
-            border-radius: 50%; 
+            border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
             font-weight: 800;
-            font-size: 1.2rem;
-            box-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
+            font-size: 1rem;
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
+            text-decoration: none;
         }
 
         .brand-text {
             font-size: 0.9rem;
             font-weight: 600;
-            color: var(--text-muted);
+            color: var(--text-main);
             text-transform: uppercase;
             letter-spacing: 1px;
             line-height: 1.2;
+        }
+
+        .brand-text span {
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            font-weight: 400;
         }
 
         .header-center {
@@ -108,46 +118,47 @@
         }
 
         .header-center h1 {
-            font-size: 1.8rem;
-            font-weight: 800;
+            font-size: 2rem;
+            font-weight: 900;
             color: var(--white);
-            letter-spacing: 3px;
-            text-shadow: 0 0 15px rgba(0, 240, 255, 0.6);
+            letter-spacing: 4px;
+            text-shadow: 0 0 20px rgba(0, 240, 255, 0.6);
+            margin: 0;
+        }
+
+        .header-center h1 span {
+            color: var(--primary);
         }
 
         .header-right {
             flex: 1;
             display: flex;
             justify-content: flex-end;
+            gap: 0.8rem;
         }
 
-        .main-nav {
-            display: flex;
-            gap: 0.5rem;
-        }
-
-        .main-tab {
+        .nav-tab {
             text-decoration: none;
             background: transparent;
             color: var(--text-muted);
             font-size: 0.95rem;
             font-weight: 500;
-            cursor: pointer;
-            padding: 8px 16px;
+            padding: 8px 18px;
             border-radius: 8px;
             transition: all 0.3s ease;
             letter-spacing: 1px;
+            border: 1px solid transparent;
         }
 
-        .main-tab:hover {
+        .nav-tab:hover {
             color: var(--white);
             background: rgba(255, 255, 255, 0.05);
         }
 
-        .main-tab.active {
+        .nav-tab.active {
             color: var(--primary);
-            background: rgba(0, 240, 255, 0.1);
-            border: 1px solid rgba(0, 240, 255, 0.2);
+            background: rgba(0, 240, 255, 0.08);
+            border-color: rgba(0, 240, 255, 0.2);
             box-shadow: 0 0 15px rgba(0, 240, 255, 0.1);
         }
 
@@ -295,10 +306,11 @@
             border-radius: 8px; display: none; border: 1px solid #10b981;
         }
 
+        /* Responsive Design */
         @media (max-width: 900px) {
-            header { flex-direction: column; padding: 1rem; gap: 15px;}
-            .header-left, .header-center, .header-right { flex: none; justify-content: center; text-align: center;}
-            .header-center h1 { font-size: 1.5rem; }
+            header { flex-direction: column; gap: 15px; padding: 1.5rem 1rem; }
+            .header-left, .header-center, .header-right { flex: none; justify-content: center; text-align: center; }
+            .header-center h1 { font-size: 1.6rem; }
         }
     </style>
 </head>
@@ -308,19 +320,19 @@
         <div class="header-left">
             <div class="logo-placeholder">⚙️</div>
             <div class="brand-text">
-                JPSME<br>CTU Main
+                JPSME<br><span>CTU Main Chapter</span>
             </div>
         </div>
         
         <div class="header-center">
-            <h1>PROJECT NEXUS</h1>
+            <h1>PROJECT <span>NEXUS</span></h1>
         </div>
 
         <div class="header-right">
             <nav class="main-nav">
-                <a href="index.html" class="main-tab">Home</a>
-                <a href="directory.html" class="main-tab active">Directory</a>
-                <a href="index.html#contact-section" class="main-tab">Contact Us</a>
+                <a href="index.html" class="nav-tab">Home</a>
+                <a href="directory.html" class="nav-tab active">Directory</a>
+                <a href="index.html#contact-section" class="nav-tab">Contact Us</a>
             </nav>
         </div>
     </header>
