@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project OJT NEXUS | JPSME CTU Main</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #1e3a8a; 
-            --secondary: #d97706; 
+            --primary: #1e3a8a; /* Bright Royal Blue */
+            --secondary: #d97706; /* Warm Gold */
             --text-dark: #0f172a;
             --text-light: #334155;
             --white: #ffffff;
-            --glass-bg: rgba(255, 255, 255, 0.65); /* More frosted glass */
+            --glass-bg: rgba(255, 255, 255, 0.65);
             --glass-border: rgba(255, 255, 255, 0.9);
             --glass-shadow: rgba(0, 0, 0, 0.1);
         }
@@ -22,13 +22,14 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
         }
 
         body {
-            /* VIBRANT PASTEL GRADIENT - Faster animation so it's obvious */
+            /* VIBRANT PASTEL GRADIENT */
             background: linear-gradient(-45deg, #ffc3a0, #ffafbd, #a1c4fd, #c2e9fb, #e0c3fc);
             background-size: 300% 300%;
-            animation: gradientBG 8s ease infinite;
+            animation: gradientBG 10s ease infinite;
             color: var(--text-dark);
             min-height: 100vh;
             display: flex;
@@ -43,96 +44,127 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* --- OBVIOUS FLOATING MACHINE GIFS --- */
+        /* --- FLOATING MACHINE GIFS --- */
         .bg-gif {
             position: fixed;
             z-index: -1;
-            opacity: 0.6; /* Increased from 0.12 to 0.6 so they are highly visible */
+            opacity: 0.5; 
             pointer-events: none;
             border-radius: 15px;
-            box-shadow: 0 0 20px rgba(255,255,255,0.8); /* Added white glow */
+            box-shadow: 0 0 20px rgba(255,255,255,0.8);
         }
 
-        .gif1 { top: 8%; left: 3%; width: 280px; transform: rotate(5deg); }
+        .gif1 { top: 15%; left: 3%; width: 280px; transform: rotate(5deg); }
         .gif2 { bottom: 8%; right: 3%; width: 320px; transform: rotate(-10deg); }
         .gif3 { top: 35%; right: 5%; width: 250px; transform: rotate(15deg); }
         .gif4 { bottom: 25%; left: 4%; width: 220px; transform: rotate(-8deg); }
 
-        /* --- HEADER --- */
+        /* --- PROFESSIONAL HEADER --- */
         header {
-            background: rgba(255, 255, 255, 0.4);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 2px solid var(--glass-border);
-            padding: 2rem 2rem;
-            text-align: center;
-            box-shadow: 0 10px 30px var(--glass-shadow);
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--glass-border);
+            padding: 0.8rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 20px var(--glass-shadow);
             position: sticky;
             top: 0;
             z-index: 100;
         }
 
-        header h2 {
-            font-size: 0.95rem;
-            font-weight: 600;
-            letter-spacing: 1.5px;
-            color: var(--text-dark);
-            text-transform: uppercase;
+        .header-brand {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
         }
 
-        header h1 {
-            font-size: 3rem;
-            font-weight: 800;
-            color: var(--primary);
-            margin-top: 0.5rem;
-            text-shadow: 2px 2px 0px #fff;
-        }
-
-        /* --- NAVIGATION --- */
-        nav {
+        /* Logo Placeholder */
+        .logo-placeholder {
+            width: 45px;
+            height: 45px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
             display: flex;
             justify-content: center;
-            gap: 1.5rem;
-            margin-top: 1.5rem;
+            align-items: center;
+            font-weight: 800;
+            font-size: 0.8rem;
+            box-shadow: 0 4px 10px rgba(30, 58, 138, 0.3);
         }
 
-        .nav-btn {
-            background: rgba(255, 255, 255, 0.8);
+        .brand-text h1 {
+            font-size: 1.2rem;
+            font-weight: 800;
             color: var(--primary);
-            border: 2px solid var(--primary);
-            padding: 12px 28px;
-            border-radius: 30px;
-            cursor: pointer;
-            font-weight: 700;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            line-height: 1.1;
+        }
+        
+        .brand-text h2 {
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        .nav-btn:hover, .nav-btn.active {
-            background: var(--primary);
-            color: var(--white);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 15px rgba(37, 99, 235, 0.3);
+        /* Main Navigation Tabs */
+        .main-nav {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .main-tab {
+            text-decoration: none;
+            background: transparent;
+            border: none;
+            color: var(--text-light);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .main-tab:hover {
+            color: var(--primary);
+            background: rgba(30, 58, 138, 0.05);
+        }
+
+        .main-tab.active {
+            color: var(--primary);
+            background: rgba(30, 58, 138, 0.1);
+            box-shadow: inset 0 -3px 0 var(--primary);
         }
 
         /* --- MAIN CONTAINER --- */
         main {
             flex-grow: 1;
             padding: 3rem 2rem;
-            max-width: 1200px;
+            max-width: 1000px;
             margin: 0 auto;
             width: 100%;
             z-index: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
         }
 
-        .view-section {
-            display: none;
-            animation: slideUp 0.5s ease-out;
-        }
-
-        .view-section.active {
-            display: block;
+        /* --- GLASSMORPHISM CARDS --- */
+        .content-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 2px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 4rem 3rem;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            animation: slideUp 0.6s ease-out;
         }
 
         @keyframes slideUp {
@@ -140,153 +172,86 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* --- DIRECTORY VIEW --- */
-        .filters {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-bottom: 3rem;
-            justify-content: center;
+        .content-card h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        .filter-btn {
-            background: rgba(255, 255, 255, 0.9);
-            border: 2px solid transparent;
+        .content-card p {
+            font-size: 1.1rem;
+            line-height: 1.8;
             color: var(--text-dark);
-            padding: 10px 20px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 0.95rem;
-            font-weight: 600;
-            transition: 0.3s;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            margin-bottom: 1.5rem;
+            text-align: justify;
         }
 
-        .filter-btn:hover, .filter-btn.active {
-            background: var(--secondary);
+        .highlight-box {
+            background: rgba(30, 58, 138, 0.05);
+            border-left: 5px solid var(--secondary);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-top: 2rem;
+            text-align: left;
+        }
+
+        .highlight-box h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+
+        /* CTA Button */
+        .cta-container {
+            text-align: center;
+            margin-top: 2.5rem;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            text-decoration: none;
+            background: var(--primary);
             color: var(--white);
-            border-color: var(--secondary);
-            transform: scale(1.05);
-        }
-
-        .directory-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-            gap: 2rem;
-        }
-
-        /* Glassmorphism Cards */
-        .company-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 2px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 2rem;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-            border-top: 6px solid var(--primary);
+            padding: 14px 35px;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 25px rgba(30, 58, 138, 0.4);
             transition: all 0.3s ease;
         }
 
-        .company-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 45px rgba(0,0,0,0.15);
-            background: rgba(255, 255, 255, 0.85);
-        }
-
-        .company-name { font-size: 1.5rem; font-weight: 800; color: var(--primary); margin-bottom: 1rem; line-height: 1.3;}
-        .company-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 1.5rem; }
-        .tag { background: var(--primary); color: #fff; font-size: 0.8rem; padding: 5px 12px; border-radius: 12px; font-weight: 600;}
-        
-        .detail-group { margin-bottom: 1.2rem; font-size: 1rem; }
-        .detail-label { font-weight: 700; color: var(--text-dark); display: block; margin-bottom: 2px;}
-        .detail-text { color: var(--text-light); display: block; font-weight: 500;}
-        
-        .comments-box { 
-            background: rgba(255,255,255,0.8); 
-            padding: 15px; 
-            border-radius: 12px; 
-            font-size: 0.95rem; 
-            font-style: italic; 
-            border-left: 5px solid var(--secondary); 
-            margin-top: 20px;
-            color: var(--text-dark);
-            font-weight: 500;
-        }
-
-        /* --- ADD COMPANY FORM --- */
-        .form-container {
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            padding: 3rem;
-            border-radius: 24px;
-            border: 2px solid var(--glass-border);
-            box-shadow: 0 15px 50px rgba(0,0,0,0.15);
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .form-container h3 { 
-            margin-bottom: 2rem; 
-            color: var(--primary); 
-            text-align: center;
-            font-size: 2rem;
-            font-weight: 800;
-        }
-
-        .form-group { margin-bottom: 1.5rem; }
-        .form-group label { display: block; font-weight: 700; margin-bottom: 0.5rem; font-size: 1rem; color: var(--text-dark);}
-        
-        .form-group input[type="text"], 
-        .form-group select, 
-        .form-group textarea {
-            width: 100%; 
-            padding: 14px 15px; 
-            border: 2px solid rgba(255,255,255,0.5); 
-            border-radius: 12px; 
-            font-family: 'Poppins', sans-serif;
-            background: rgba(255,255,255,0.9);
-            font-size: 1rem;
-            font-weight: 500;
-            transition: 0.3s;
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
-        }
-
-        .form-group input[type="text"]:focus, 
-        .form-group select:focus, 
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--primary);
-            background: #fff;
-            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.2);
-        }
-
-        .form-group textarea { resize: vertical; min-height: 120px; }
-
-        .checkbox-group { display: flex; flex-wrap: wrap; gap: 15px; background: rgba(255,255,255,0.7); padding: 20px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.5);}
-        .checkbox-item { display: flex; align-items: center; gap: 8px; font-size: 1rem; font-weight: 600; cursor: pointer;}
-        .checkbox-item input { width: 18px; height: 18px; cursor: pointer;}
-
-        .submit-btn {
-            background: var(--primary); color: var(--white); border: none; padding: 16px 20px;
-            border-radius: 12px; cursor: pointer; width: 100%; font-size: 1.2rem; font-weight: 700; 
-            transition: all 0.3s ease; margin-top: 15px;
-            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
-            text-transform: uppercase;
-        }
-        .submit-btn:hover { 
-            background: #152c66; 
+        .cta-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 12px 25px rgba(37, 99, 235, 0.5);
+            box-shadow: 0 15px 30px rgba(30, 58, 138, 0.6);
+            background: #152c66;
         }
 
-        .system-msg { 
-            text-align: center; margin-top: 20px; font-weight: 700; 
-            color: #047857; background: #d1fae5; padding: 15px; 
-            border-radius: 12px; display: none;
-            border: 2px solid #10b981;
-            font-size: 1.1rem;
+        /* Contact Details Placholder */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .contact-item {
+            background: rgba(255,255,255,0.6);
+            padding: 2rem 1rem;
+            border-radius: 15px;
+            border: 1px dashed var(--primary);
+        }
+
+        @media (max-width: 768px) {
+            header { flex-direction: column; gap: 15px; padding: 1.5rem 1rem; }
+            .content-card { padding: 2.5rem 1.5rem; }
+            .content-card h2 { font-size: 2rem; }
         }
     </style>
 </head>
@@ -297,263 +262,59 @@
     <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExazdzMGpsdWt4ZGg4ZmQ4MzJ3aXk4NXYzc2JrdG1rd3FrcDZxYzE3MyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/26ufdipQqU2lhNA4g/giphy.webp" class="bg-gif gif3" alt="machine">
 
     <header>
-        <h2>Junior Philippine Society of Mechanical Engineering - CTU Main</h2>
-        <h1>PROJECT OJT NEXUS</h1>
-        <nav>
-            <button class="nav-btn active" onclick="switchView('directory')">Browse Directory</button>
-            <button class="nav-btn" onclick="switchView('add')">Contribute Experience</button>
+        <a href="index.html" class="header-brand">
+            <div class="logo-placeholder">LOGO</div>
+            <div class="brand-text">
+                <h2>JPSME - CTU Main Chapter</h2>
+                <h1>OJT NEXUS</h1>
+            </div>
+        </a>
+        
+        <nav class="main-nav">
+            <a href="index.html" class="main-tab active">Home</a>
+            <a href="directory.html" class="main-tab">Directory</a>
+            <a href="#contact-section" class="main-tab">Contact Us</a>
         </nav>
     </header>
 
     <main>
-        <section id="directory-view" class="view-section active">
-            <div class="filters" id="filter-container">
-                <button class="filter-btn active" onclick="filterDirectory('All')">All Fields</button>
-                <button class="filter-btn" onclick="filterDirectory('HVAC')">HVAC</button>
-                <button class="filter-btn" onclick="filterDirectory('Machine Shop')">Machine Shop</button>
-                <button class="filter-btn" onclick="filterDirectory('CAD / Design')">CAD / Design</button>
-                <button class="filter-btn" onclick="filterDirectory('Power Plant')">Power Plant</button>
-                <button class="filter-btn" onclick="filterDirectory('Manufacturing')">Manufacturing</button>
-                <button class="filter-btn" onclick="filterDirectory('Construction')">Construction</button>
+        <section id="home-section" class="content-card">
+            <h2>Welcome to Project Nexus</h2>
+            <p>As the second semester approaches, Third-Year BSME students face the critical transition to their On-the-Job Training (OJT). Historically, our mechanical engineering students encounter significant challenges during this phase.</p>
+            <p>These challenges include the logistical burden of the search, the "hassle" of blind hunting for companies, and the disadvantage of lacking a "backer" or professional network. Furthermore, there is often uncertainty about documentary requirements and limited knowledge of stipends or allowances.</p>
+            
+            <div class="highlight-box">
+                <h3>Our Initiative</h3>
+                <p style="margin-bottom: 0;">To address this, the Internal and External Affairs (IEA) Committee proposes <strong>Project OJT NEXUS</strong>. This centralized directory serves as a channel for gathering intelligence from 4th Year students and Alumni to guide incoming trainees. By sharing verified company details, application modes, and firsthand experiences, we aim to ensure equal access and a smoother OJT journey for every aspiring mechanical engineer.</p>
             </div>
 
-            <div class="directory-grid" id="directory-grid">
-                </div>
+            <div class="cta-container">
+                <a href="directory.html" class="cta-btn">Access the Directory</a>
+            </div>
         </section>
 
-        <section id="add-view" class="view-section">
-            <div class="form-container">
-                <h3>Add a Company / OJT Experience</h3>
-                <form id="addCompanyForm" onsubmit="handleFormSubmit(event)">
-                    <div class="form-group">
-                        <label>Company Name *</label>
-                        <input type="text" id="compName" required placeholder="e.g. SMC Consolidated Power Corp.">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Company Address *</label>
-                        <input type="text" id="compAddress" required placeholder="e.g. Mandaue City, Cebu">
-                    </div>
+        <section id="contact-section" class="content-card">
+            <h2>Contact Us</h2>
+            <p style="text-align: center;">Have questions about the directory or want to partner with JPSME CTU Main? Reach out to us through the following channels:</p>
+            
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <h3 style="color: var(--primary); margin-bottom: 10px;">📧 Email Us</h3>
+                    <p style="color: var(--text-light); font-size: 0.95rem;">jpsme.ctumain@example.com</p>
+                </div>
+                
+                <div class="contact-item">
+                    <h3 style="color: var(--primary); margin-bottom: 10px;">📘 Facebook</h3>
+                    <p style="color: var(--text-light); font-size: 0.95rem;">@JPSMECTUMain</p>
+                </div>
 
-                    <div style="display: flex; gap: 15px; flex-wrap: wrap;">
-                        <div class="form-group" style="flex: 1; min-width: 250px;">
-                            <label>Contact Person (HR/Engineer)</label>
-                            <input type="text" id="compPerson" placeholder="e.g. Engr. Juan Dela Cruz">
-                        </div>
-                        <div class="form-group" style="flex: 1; min-width: 250px;">
-                            <label>Contact Details (Email/Phone)</label>
-                            <input type="text" id="compContact" placeholder="e.g. hr@company.com / 09123456789">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Mode of Application</label>
-                        <select id="compMode">
-                            <option value="Physical Submission (Walk-in)">Physical Submission (Walk-in)</option>
-                            <option value="Online via Email">Online via Email</option>
-                            <option value="Online via Portal">Online via Portal</option>
-                            <option value="Both Physical and Online">Both Physical and Online</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Engineering Fields (Select all that apply) *</label>
-                        <div class="checkbox-group">
-                            <label class="checkbox-item"><input type="checkbox" value="HVAC" class="field-cb"> HVAC</label>
-                            <label class="checkbox-item"><input type="checkbox" value="Machine Shop" class="field-cb"> Machine Shop</label>
-                            <label class="checkbox-item"><input type="checkbox" value="CAD / Design" class="field-cb"> CAD / Design</label>
-                            <label class="checkbox-item"><input type="checkbox" value="Power Plant" class="field-cb"> Power Plant</label>
-                            <label class="checkbox-item"><input type="checkbox" value="Manufacturing" class="field-cb"> Manufacturing</label>
-                            <label class="checkbox-item"><input type="checkbox" value="Construction" class="field-cb"> Construction</label>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Application Requirements</label>
-                        <textarea id="compReq" placeholder="e.g. Endorsement Letter, Resume, MOA, Medical Certificate..."></textarea>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Comments / Tips / Allowance Info</label>
-                        <textarea id="compComments" placeholder="e.g. They give 300/day allowance. Interview is purely technical. Need to bring your own steel-toe boots."></textarea>
-                    </div>
-
-                    <button type="submit" class="submit-btn">Submit to Directory</button>
-                    <div id="systemMessage" class="system-msg">Company successfully added to the directory!</div>
-                </form>
+                <div class="contact-item">
+                    <h3 style="color: var(--primary); margin-bottom: 10px;">📍 Office</h3>
+                    <p style="color: var(--text-light); font-size: 0.95rem;">M.J. Cuenco Ave, Cebu City</p>
+                </div>
             </div>
         </section>
     </main>
 
-    <script>
-        // Initial Dummy Data
-        let companies = [
-            {
-                name: "Tsuneishi Heavy Industries (Cebu), Inc.",
-                address: "Buanoy, Balamban, Cebu",
-                contacts: [{ person: "Ms. HR Recruiter", details: "recruitment@tsuneishi.com" }],
-                mode: "Online via Email",
-                fields: ["Manufacturing", "CAD / Design", "Machine Shop"],
-                reqs: "Resume, Endorsement Letter from CTU, Transcript of Records",
-                comments: "Great experience in ship building. Free lunch and uniform provided. Allowance is roughly 250/day."
-            },
-            {
-                name: "Daikin Philippines - Cebu Branch",
-                address: "Mandaue City, Cebu",
-                contacts: [{ person: "Engr. Mark Santos", details: "0917-123-4567" }],
-                mode: "Both Physical and Online",
-                fields: ["HVAC"],
-                reqs: "Resume, Application Letter, MOA",
-                comments: "Very hands-on troubleshooting of VRV systems. Highly recommended if you want to pursue HVAC."
-            }
-        ];
-
-        // Navigation Logic
-        function switchView(view) {
-            document.querySelectorAll('.view-section').forEach(sec => sec.classList.remove('active'));
-            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
-            
-            document.getElementById(view + '-view').classList.add('active');
-            event.target.classList.add('active');
-
-            if(view === 'directory') renderDirectory('All');
-        }
-
-        // Render Directory Logic
-        function renderDirectory(filterField) {
-            const grid = document.getElementById('directory-grid');
-            grid.innerHTML = ''; 
-
-            document.querySelectorAll('.filter-btn').forEach(btn => {
-                btn.classList.remove('active');
-                if(btn.innerText === filterField || (btn.innerText === 'All Fields' && filterField === 'All')) {
-                    btn.classList.add('active');
-                }
-            });
-
-            const filteredData = filterField === 'All' 
-                ? companies 
-                : companies.filter(c => c.fields.includes(filterField));
-
-            filteredData.forEach(comp => {
-                let tagsHTML = comp.fields.map(f => `<span class="tag">${f}</span>`).join('');
-                
-                let contactsHTML = comp.contacts.map(c => `
-                    <span class="detail-text">• ${c.person ? c.person : 'N/A'} - ${c.details ? c.details : 'No details'}</span>
-                `).join('');
-
-                let cardHTML = `
-                    <div class="company-card">
-                        <div class="company-name">${comp.name}</div>
-                        <div class="company-tags">${tagsHTML}</div>
-                        
-                        <div class="detail-group">
-                            <span class="detail-label">📍 Address:</span>
-                            <span class="detail-text">${comp.address}</span>
-                        </div>
-
-                        <div class="detail-group">
-                            <span class="detail-label">📞 Contacts:</span>
-                            ${contactsHTML}
-                        </div>
-
-                        <div class="detail-group">
-                            <span class="detail-label">📄 Mode of Application:</span>
-                            <span class="detail-text">${comp.mode}</span>
-                        </div>
-
-                        <div class="detail-group">
-                            <span class="detail-label">📋 Requirements:</span>
-                            <span class="detail-text">${comp.reqs || 'Not specified'}</span>
-                        </div>
-
-                        ${comp.comments ? `
-                        <div class="comments-box">
-                            <strong>Feedback:</strong> "${comp.comments}"
-                        </div>` : ''}
-                    </div>
-                `;
-                grid.innerHTML += cardHTML;
-            });
-
-            if(filteredData.length === 0) {
-                grid.innerHTML = `<p style="text-align:center; grid-column: 1/-1; color: var(--text-dark); font-size: 1.2rem; font-weight: 600; padding: 2rem;">No companies found for this field yet. Be the first to contribute!</p>`;
-            }
-        }
-
-        // Filter Trigger
-        function filterDirectory(field) {
-            renderDirectory(field);
-        }
-
-        // Handle Form Submission & Duplicate Logic
-        function handleFormSubmit(e) {
-            e.preventDefault();
-
-            const name = document.getElementById('compName').value.trim();
-            const address = document.getElementById('compAddress').value.trim();
-            const person = document.getElementById('compPerson').value.trim();
-            const contactDetails = document.getElementById('compContact').value.trim();
-            const mode = document.getElementById('compMode').value;
-            const reqs = document.getElementById('compReq').value.trim();
-            const comments = document.getElementById('compComments').value.trim();
-            
-            let selectedFields = [];
-            document.querySelectorAll('.field-cb:checked').forEach(cb => selectedFields.push(cb.value));
-
-            if(selectedFields.length === 0) {
-                alert("Please select at least one Engineering Field.");
-                return;
-            }
-
-            let existingCompanyIndex = companies.findIndex(c => c.name.toLowerCase() === name.toLowerCase());
-
-            if(existingCompanyIndex !== -1) {
-                let comp = companies[existingCompanyIndex];
-                let contactExists = comp.contacts.some(c => 
-                    c.person.toLowerCase() === person.toLowerCase() && 
-                    c.details.toLowerCase() === contactDetails.toLowerCase()
-                );
-
-                if(contactExists) {
-                    alert("This company and contact person are already listed in the directory!");
-                    return;
-                } else {
-                    comp.contacts.push({ person: person, details: contactDetails });
-                    selectedFields.forEach(f => {
-                        if(!comp.fields.includes(f)) comp.fields.push(f);
-                    });
-                    if(comments) {
-                        comp.comments += ` | Update: ${comments}`;
-                    }
-                    showSuccessMessage("Company already exists. New contact details successfully appended!");
-                }
-            } else {
-                let newCompany = {
-                    name: name,
-                    address: address,
-                    contacts: [{ person: person, details: contactDetails }],
-                    mode: mode,
-                    fields: selectedFields,
-                    reqs: reqs,
-                    comments: comments
-                };
-                companies.push(newCompany);
-                showSuccessMessage("New company successfully added to the directory!");
-            }
-
-            document.getElementById('addCompanyForm').reset();
-        }
-
-        function showSuccessMessage(msg) {
-            const msgBox = document.getElementById('systemMessage');
-            msgBox.innerText = msg;
-            msgBox.style.display = 'block';
-            setTimeout(() => { msgBox.style.display = 'none'; }, 4000);
-        }
-
-        // Initialize App
-        renderDirectory('All');
-    </script>
 </body>
 </html>
