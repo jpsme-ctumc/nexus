@@ -498,29 +498,37 @@
     </main>
 
     <script>
-        // Initial Dummy Data
-        let companies = [
-            {
-                name: "Ina Micro Opto Corporation",
-                address: "MEPZ II, Basak, Lapu Lapu City, Cebu",
-                contacts: [{ person: "HR - Christine Dignos", details: "09176291617" }],
-                mode: "Online via Email",
-                fields: ["Manufacturing"],
-                reqs: "Resume, Endorsement Letter from CTU, Payment for Company ID, Slippers",
-                comments: "Good for students who are interested in manufacturing processes or operating machine like CNC lathe machines."
-            },
-            {
-                name: "OPASCOR",
-                address: "B.Benedicto St, Cebu City, 6000 Cebu, Philippines",
-                contacts: [{ person: "Jocelyn G. Ranario", details: "-" }],
-                mode: "Walk-in",
-                fields: ["Motorpool"],
-                reqs: "Resume, Application Letter, MOA",
-                comments: "Hands-on and friendly."
-            }
-        ];
+        // The API URL you just created!
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzrJJvN1FeX6M__nl97WhByVkPes9b4SYsUCPEEUDyL0Pl7H7bwwDp3ciespnghJx4PNQ/exec';
+        let companies = [];
 
-        // Navigation Logic
+        // --- FETCH LIVE DATA FROM GOOGLE SHEETS ---
+        async function loadDirectory() {
+            const grid = document.getElementById('directory-grid');
+            grid.innerHTML = '<p style="text-align:center; grid-column: 1/-1; color: var(--primary); padding: 2rem;">Loading live database...</p>';
+
+            try {
+                const response = await fetch(scriptURL);
+                const data = await response.json();
+                
+                // Convert Google Sheets data into our website format
+                companies = data.map(row => ({
+                    name: row.Name || '',
+                    address: row.Address || '',
+                    contacts: [{ person: row.Person || '', details: row.ContactDetails || '' }],
+                    mode: row.Mode || '',
+                    fields: row.Fields ? row.Fields.split(',').map(f => f.trim()) : [],
+                    reqs: row.Reqs || '',
+                    comments: row.Comments || ''
+                }));
+
+                renderDirectory('All');
+            } catch (error) {
+                grid.innerHTML = '<p style="text-align:center; grid-column: 1/-1; color: #ff4757; padding: 2rem;">Error connecting to database. Please refresh.</p>';
+            }
+        }
+
+        // --- NAVIGATION LOGIC ---
         function switchView(view) {
             document.querySelectorAll('.view-section').forEach(sec => sec.classList.remove('active'));
             document.querySelectorAll('.sub-nav-btn').forEach(btn => btn.classList.remove('active'));
@@ -531,7 +539,7 @@
             if(view === 'browse') renderDirectory('All');
         }
 
-        // Render Directory
+        // --- RENDER DIRECTORY ---
         function renderDirectory(filterField) {
             const grid = document.getElementById('directory-grid');
             grid.innerHTML = ''; 
@@ -560,7 +568,8 @@
                 let cardHTML = `
                     <div class="company-card">
                         <div class="card-content">
-                        <button class="delete-btn" onclick="deleteCompany('${comp.name}')">🗑️ Delete</button>
+                            <button class="delete-btn" onclick="deleteCompany('${comp.name}')">🗑️ Delete</button>
+
                             <div class="company-name">${comp.name}</div>
                             <div class="company-tags">${tagsHTML}</div>
                             
@@ -575,6 +584,11 @@
                             </div>
 
                             <div class="detail-group">
+                                <span class="detail-label">📄 Mode of Application:</span>
+                                <span class="detail-text">${comp.mode}</span>
+                            </div>
+
+                            <div class="detail-group">
                                 <span class="detail-label">📋 Requirements:</span>
                                 <span class="detail-text">
                                     ${comp.reqs || 'Not specified'}
@@ -582,15 +596,10 @@
                                 </span>
                             </div>
 
-                            <div class="detail-group">
-                                <span class="detail-label">📋 Requirements:</span>
-                                <span class="detail-text">${comp.reqs || 'Not specified'}</span>
-                            </div>
-
                             ${comp.comments ? `
                             <div class="comments-box">
                                 <strong>Feedback:</strong> "${comp.comments}"
-                                <button class="delete-comment-btn" onclick="clearComment('${comp.name}')">❌ Clear</button>
+                                <button class="delete-comment-btn" onclick="clearComment('${comp.name}')">❌</button>
                             </div>` : ''}
                         </div>
                     </div>
@@ -607,9 +616,13 @@
             renderDirectory(field);
         }
 
-        // Form Logic (Duplicate Handling)
-        function handleFormSubmit(e) {
+        // --- SECURE FORM SUBMISSION TO GOOGLE SHEETS ---
+        async function handleFormSubmit(e) {
             e.preventDefault();
+            
+            const submitBtn = document.querySelector('.submit-btn');
+            submitBtn.innerText = "Submitting to Database...";
+            submitBtn.disabled = true;
 
             const name = document.getElementById('compName').value.trim();
             const address = document.getElementById('compAddress').value.trim();
@@ -624,39 +637,42 @@
 
             if(selectedFields.length === 0) {
                 alert("Please select at least one Engineering Field.");
+                submitBtn.innerText = "Submit to Directory";
+                submitBtn.disabled = false;
                 return;
             }
 
-            let existingCompanyIndex = companies.findIndex(c => c.name.toLowerCase() === name.toLowerCase());
+            // Package the data for Google Sheets
+            const payload = {
+                name: name,
+                address: address,
+                person: person,
+                contactDetails: contactDetails,
+                mode: mode,
+                fields: selectedFields.join(', '), // Joins multiple fields with a comma
+                reqs: reqs,
+                comments: comments
+            };
 
-            if(existingCompanyIndex !== -1) {
-                let comp = companies[existingCompanyIndex];
-                let contactExists = comp.contacts.some(c => 
-                    c.person.toLowerCase() === person.toLowerCase() && 
-                    c.details.toLowerCase() === contactDetails.toLowerCase()
-                );
+            try {
+                // Send the POST request to the API
+                await fetch(scriptURL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                    body: JSON.stringify(payload)
+                });
 
-                if(contactExists) {
-                    alert("This company and contact person are already listed in the directory!");
-                    return;
-                } else {
-                    comp.contacts.push({ person: person, details: contactDetails });
-                    selectedFields.forEach(f => { if(!comp.fields.includes(f)) comp.fields.push(f); });
-                    if(comments) comp.comments += ` | Update: ${comments}`;
-                    
-                    showSuccessMessage("Company already exists. New contact details successfully appended!");
-                }
-            } else {
-                let newCompany = {
-                    name: name, address: address,
-                    contacts: [{ person: person, details: contactDetails }],
-                    mode: mode, fields: selectedFields, reqs: reqs, comments: comments
-                };
-                companies.push(newCompany);
-                showSuccessMessage("New company successfully added to the directory!");
+                showSuccessMessage("Success! Entry permanently added to the live database.");
+                document.getElementById('addCompanyForm').reset();
+                
+                // Reload the directory to show the new entry immediately
+                loadDirectory();
+            } catch (error) {
+                alert("Error submitting to database. Please check your internet connection.");
+            } finally {
+                submitBtn.innerText = "Submit to Directory";
+                submitBtn.disabled = false;
             }
-
-            document.getElementById('addCompanyForm').reset();
         }
 
         function showSuccessMessage(msg) {
@@ -664,94 +680,6 @@
             msgBox.innerText = msg;
             msgBox.style.display = 'block';
             setTimeout(() => { msgBox.style.display = 'none'; }, 4000);
-        }
-// --- DELETE LOGIC ---
-        function deleteCompany(companyName) {
-            const isConfirmed = confirm(`Are you sure you want to delete "${companyName}" from the directory?`);
-            
-            if (isConfirmed) {
-                companies = companies.filter(c => c.name !== companyName);
-                
-                let activeFilter = 'All';
-                document.querySelectorAll('.filter-btn').forEach(btn => {
-                    if(btn.classList.contains('active')) {
-                        activeFilter = btn.innerText === 'All Fields' ? 'All' : btn.innerText;
-                    }
-                    
-                });
-
-                renderDirectory(activeFilter);
-            }
-        }
-        // --- CLEAR COMMENT LOGIC ---
-        function clearComment(companyName) {
-            const isConfirmed = confirm(`Are you sure you want to delete the feedback for "${companyName}"?`);
-            
-            if (isConfirmed) {
-                // Find the specific company in the array
-                let targetCompany = companies.find(c => c.name === companyName);
-                
-                // If found, clear the comments
-                if (targetCompany) {
-                    targetCompany.comments = "";
-                }
-                
-                // Find out which filter is currently active
-                let activeFilter = 'All';
-                document.querySelectorAll('.filter-btn').forEach(btn => {
-                    if(btn.classList.contains('active')) {
-                        activeFilter = btn.innerText === 'All Fields' ? 'All' : btn.innerText;
-                    }
-                });
-
-                // Re-render the directory to show the comment is gone
-                renderDirectory(activeFilter);
-            }
-        }
-        // --- CLEAR CONTACT LOGIC ---
-        function removeContact(companyName, contactIndex) {
-            const isConfirmed = confirm(`Are you sure you want to remove this contact from "${companyName}"?`);
-            
-            if (isConfirmed) {
-                let targetCompany = companies.find(c => c.name === companyName);
-                
-                // Remove the specific contact using its index
-                if (targetCompany && targetCompany.contacts) {
-                    targetCompany.contacts.splice(contactIndex, 1); 
-                }
-                
-                // Refresh the page to show it is gone
-                let activeFilter = 'All';
-                document.querySelectorAll('.filter-btn').forEach(btn => {
-                    if(btn.classList.contains('active')) {
-                        activeFilter = btn.innerText === 'All Fields' ? 'All' : btn.innerText;
-                    }
-                });
-                renderDirectory(activeFilter);
-            }
-        }
-
-        // --- CLEAR REQUIREMENTS LOGIC ---
-        function clearReqs(companyName) {
-            const isConfirmed = confirm(`Are you sure you want to clear the requirements for "${companyName}"?`);
-            
-            if (isConfirmed) {
-                let targetCompany = companies.find(c => c.name === companyName);
-                
-                // Clear the requirements
-                if (targetCompany) {
-                    targetCompany.reqs = "";
-                }
-                
-                // Refresh the page
-                let activeFilter = 'All';
-                document.querySelectorAll('.filter-btn').forEach(btn => {
-                    if(btn.classList.contains('active')) {
-                        activeFilter = btn.innerText === 'All Fields' ? 'All' : btn.innerText;
-                    }
-                });
-                renderDirectory(activeFilter);
-            }
         }
 
         // --- ADMIN LOGIN LOGIC ---
@@ -766,18 +694,59 @@
             }
 
             const passcode = prompt("Enter JPSME Officer Passcode:");
-            
-            // The secret password is NEXUS2026
             if (passcode === "NEXUS2026") { 
                 document.body.classList.add('admin-mode');
                 isAdmin = true;
-                alert("Admin access granted! You can now delete entries.");
+                alert("Admin access granted! Visual delete tools unlocked.\n\n(Note: To permanently delete an entry from the database, please delete the row in the Google Sheet).");
             } else if (passcode !== null) {
                 alert("Incorrect passcode. Access denied.");
             }
         }
-        // Init
-        renderDirectory('All');
+
+        // --- VISUAL DELETE LOGIC (For Demo & Fast UI cleanup) ---
+        function deleteCompany(companyName) {
+            if (confirm(`Visually remove "${companyName}" from the screen?`)) {
+                companies = companies.filter(c => c.name !== companyName);
+                refreshActiveFilter();
+            }
+        }
+
+        function clearComment(companyName) {
+            if (confirm(`Visually clear the feedback for "${companyName}"?`)) {
+                let target = companies.find(c => c.name === companyName);
+                if (target) target.comments = "";
+                refreshActiveFilter();
+            }
+        }
+
+        function removeContact(companyName, index) {
+            if (confirm(`Visually remove this contact from "${companyName}"?`)) {
+                let target = companies.find(c => c.name === companyName);
+                if (target && target.contacts) target.contacts.splice(index, 1);
+                refreshActiveFilter();
+            }
+        }
+
+        function clearReqs(companyName) {
+            if (confirm(`Visually clear requirements for "${companyName}"?`)) {
+                let target = companies.find(c => c.name === companyName);
+                if (target) target.reqs = "";
+                refreshActiveFilter();
+            }
+        }
+
+        function refreshActiveFilter() {
+            let activeFilter = 'All';
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                if(btn.classList.contains('active')) {
+                    activeFilter = btn.innerText === 'All Fields' ? 'All' : btn.innerText;
+                }
+            });
+            renderDirectory(activeFilter);
+        }
+
+        // INIT: Start by pulling data from the database!
+        loadDirectory();
     </script>
 </body>
 </html>
