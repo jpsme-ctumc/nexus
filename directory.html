@@ -267,6 +267,32 @@
         body.admin-mode .delete-btn {
             display: block; /* Reveals the button */
         }
+        /* --- MINI DELETE BUTTON FOR COMMENTS --- */
+        .delete-comment-btn {
+            display: none; /* Hidden by default */
+            background: transparent;
+            color: #ff4757;
+            border: 1px solid #ff4757;
+            border-radius: 6px;
+            padding: 2px 8px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-left: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+            text-transform: uppercase;
+        }
+
+        .delete-comment-btn:hover {
+            background: #ff4757;
+            color: var(--white);
+            box-shadow: 0 0 10px rgba(255, 71, 87, 0.4);
+        }
+
+        /* Reveal mini button when in Admin Mode */
+        body.admin-mode .delete-comment-btn {
+            display: inline-block;
+        }
 
         .admin-trigger {
             position: fixed;
@@ -524,8 +550,11 @@
             filteredData.forEach(comp => {
                 let tagsHTML = comp.fields.map(f => `<span class="tag">${f}</span>`).join('');
                 
-                let contactsHTML = comp.contacts.map(c => `
-                    <span class="detail-text">• ${c.person ? c.person : 'N/A'} - ${c.details ? c.details : 'No details'}</span>
+                let contactsHTML = comp.contacts.map((c, index) => `
+                    <span class="detail-text">
+                        • ${c.person ? c.person : 'N/A'} - ${c.details ? c.details : 'No details'}
+                        <button class="delete-comment-btn" onclick="removeContact('${comp.name}', ${index})">❌</button>
+                    </span><br>
                 `).join('');
 
                 let cardHTML = `
@@ -546,8 +575,11 @@
                             </div>
 
                             <div class="detail-group">
-                                <span class="detail-label">📄 Mode of Application:</span>
-                                <span class="detail-text">${comp.mode}</span>
+                                <span class="detail-label">📋 Requirements:</span>
+                                <span class="detail-text">
+                                    ${comp.reqs || 'Not specified'}
+                                    ${comp.reqs ? `<button class="delete-comment-btn" onclick="clearReqs('${comp.name}')">❌</button>` : ''}
+                                </span>
                             </div>
 
                             <div class="detail-group">
@@ -558,6 +590,7 @@
                             ${comp.comments ? `
                             <div class="comments-box">
                                 <strong>Feedback:</strong> "${comp.comments}"
+                                <button class="delete-comment-btn" onclick="clearComment('${comp.name}')">❌ Clear</button>
                             </div>` : ''}
                         </div>
                     </div>
@@ -644,8 +677,79 @@
                     if(btn.classList.contains('active')) {
                         activeFilter = btn.innerText === 'All Fields' ? 'All' : btn.innerText;
                     }
+                    
                 });
 
+                renderDirectory(activeFilter);
+            }
+        }
+        // --- CLEAR COMMENT LOGIC ---
+        function clearComment(companyName) {
+            const isConfirmed = confirm(`Are you sure you want to delete the feedback for "${companyName}"?`);
+            
+            if (isConfirmed) {
+                // Find the specific company in the array
+                let targetCompany = companies.find(c => c.name === companyName);
+                
+                // If found, clear the comments
+                if (targetCompany) {
+                    targetCompany.comments = "";
+                }
+                
+                // Find out which filter is currently active
+                let activeFilter = 'All';
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    if(btn.classList.contains('active')) {
+                        activeFilter = btn.innerText === 'All Fields' ? 'All' : btn.innerText;
+                    }
+                });
+
+                // Re-render the directory to show the comment is gone
+                renderDirectory(activeFilter);
+            }
+        }
+        // --- CLEAR CONTACT LOGIC ---
+        function removeContact(companyName, contactIndex) {
+            const isConfirmed = confirm(`Are you sure you want to remove this contact from "${companyName}"?`);
+            
+            if (isConfirmed) {
+                let targetCompany = companies.find(c => c.name === companyName);
+                
+                // Remove the specific contact using its index
+                if (targetCompany && targetCompany.contacts) {
+                    targetCompany.contacts.splice(contactIndex, 1); 
+                }
+                
+                // Refresh the page to show it is gone
+                let activeFilter = 'All';
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    if(btn.classList.contains('active')) {
+                        activeFilter = btn.innerText === 'All Fields' ? 'All' : btn.innerText;
+                    }
+                });
+                renderDirectory(activeFilter);
+            }
+        }
+
+        // --- CLEAR REQUIREMENTS LOGIC ---
+        function clearReqs(companyName) {
+            const isConfirmed = confirm(`Are you sure you want to clear the requirements for "${companyName}"?`);
+            
+            if (isConfirmed) {
+                let targetCompany = companies.find(c => c.name === companyName);
+                
+                // Clear the requirements
+                if (targetCompany) {
+                    targetCompany.reqs = "";
+                }
+                
+                // Refresh the page
+                let activeFilter = 'All';
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    if(btn.classList.contains('active')) {
+                        activeFilter = btn.innerText === 'All Fields' ? 'All' : btn.innerText;
+                    }
+                });
                 renderDirectory(activeFilter);
             }
         }
